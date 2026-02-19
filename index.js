@@ -100,6 +100,14 @@ app.post("/api/losses", async (req, res) => {
         ex: "531" → quantity: 5, product: "3:1"
         ex: "1031" → quantity: 10, product: "3:1"
 
+      CORRECTIONS PHONÉTIQUES SANDWICHS NUMÉROTÉS — PRIORITÉ ABSOLUE:
+      Ces sandwichs ont des noms numériques. L'IA DOIT les reconnaître AVANT d'appliquer le pattern numérique viandes.
+      - "deux cent quatre-vingt", "deux cent quatre vingt", "280", "deux cent 80", "280 original", "deux cent quatre vingt orig" → "280 Original"
+      - "big arch" → "Big Arch"
+      - Ces produits sont des SANDWICHS (size: null).
+
+      RÈGLE DE PRIORITÉ: Si le transcript contient "cent quatre vingt", "280", ou "orig", c'est "280 Original", PAS une viande.
+
       CORRECTIONS PHONÉTIQUES:
       - "Apple Pay", "Apple Paie", "Apple Paille" → "Apple Pie"
       - "vegi", "végie", "végi", "veggy", "vegy" → "Veggie"
@@ -110,6 +118,7 @@ app.post("/api/losses", async (req, res) => {
       - "pota", "potat", "potato" → "Potatoes"
 
       AUTRES RÈGLES:
+      - "petit wrap", "p'tit wrap", "tit wrap", "ptit wrap" → "P'tit Wrap Ranch" (sandwich, size: null) — NE PAS confondre avec "Poulet wrap"
       - "cbo" seul → "Poulet CBO"
       - "big mac" → "Big Mac"
       - "nuggets" seul → "Nuggets"
