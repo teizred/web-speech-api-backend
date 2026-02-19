@@ -119,6 +119,7 @@ app.post("/api/losses", async (req, res) => {
 
       AUTRES RÈGLES:
       - "petit wrap", "p'tit wrap", "tit wrap", "ptit wrap" → "P'tit Wrap Ranch" (sandwich, size: null) — NE PAS confondre avec "Poulet wrap"
+      - "grand zéro", "grand zero", "zéro" seul → "Coca-Cola Cherry Zéro", size: "Grand"
       - "cbo" seul → "Poulet CBO"
       - "big mac" → "Big Mac"
       - "nuggets" seul → "Nuggets"
