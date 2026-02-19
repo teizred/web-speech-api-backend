@@ -63,23 +63,24 @@ app.post("/api/losses", async (req, res) => {
       SANDWICHS (pas de taille): CBO Smoky Ranch, McCrispy Smoky Ranch Bacon, McWrap Smoky Ranch, Big Mac Bacon, Big Mac, McVeggie, McWrap Veggie, Filet-O-Fish, McFish Mayo, McFish, Fish New York, Double Fish New York, P'tit Chicken, Croque McDo, McChicken, Cheeseburger, Egg & Cheese McMuffin, CBO, Hamburger, McWrap New York & Poulet Bacon, Royal Cheese, P'tit Wrap Ranch, Egg & Bacon McMuffin, Double Cheeseburger, Royal Deluxe, Royal Bacon, Big Tasty 1 steak, Big Tasty 2 steaks, 280 Original, Double Cheese Bacon, Big Arch, McCrispy Bacon, McCrispy, Bacon & Beef McMuffin
 
       ACCOMPAGNEMENTS:
-      Avec taille (Petit, Moyen, Grand — défaut Grand si non précisé):
+      Taille obligatoire (si non précisée, NE PAS inclure le produit):
       - Frites → Petit, Moyen, Grand
-      Avec taille (Moyen, Grand — défaut Grand si non précisé):
-      - Potatoes
-      - Wavy Fries
+      - Potatoes → Moyen, Grand
+      - Wavy Fries → Moyen, Grand
       Sans taille (produit fixe):
       - Frites Cheddar (si l'utilisateur dit "frites cheddar" OU "frites double cheddar" → toujours "Frites Cheddar")
       - Frites Bacon
       - Potatoes Cheddar (si l'utilisateur dit "potatoes cheddar" OU "potatoes double cheddar" → toujours "Potatoes Cheddar")
       - Potatoes Bacon
 
-      BOISSONS FROIDES (taille: Petit, Moyen, Grand — défaut: Grand si non précisé):
-      Eau Plate, Eau Pétillante, Oasis Tropical, Green Apple Sprite, Coca-Cola Sans-Sucres, Coca-Cola, Coca-Cola Cherry Zéro, Sprite Sans-Sucres, Fanta Sans-Sucres, Minute Maid Orange, Lipton Ice Tea, P'tit Nectar Pomme, Capri-Sun Tropical, Americano Glacé, Café Latte Glacé, Café Latte Glacé Gourmand, Thé Glacé Pêche, Délifrapp Cookie, Délifrapp Vanille, Smoothie Mangue Papaye, Smoothie Banane Fraise, Jus d'Orange, Jus de Pomme
+      BOISSONS FROIDES (taille obligatoire: Petit, Moyen, Grand):
+      RÈGLE CRITIQUE: Si l'utilisateur ne précise PAS la taille, NE PAS inclure le produit dans la réponse.
+      Eau Plate (Moyen/Grand uniquement), Eau Pétillante (Moyen/Grand uniquement), Oasis Tropical, Green Apple Sprite, Coca-Cola Sans-Sucres, Coca-Cola, Coca-Cola Cherry Zéro, Sprite Sans-Sucres, Fanta Sans-Sucres, Minute Maid Orange, Lipton Ice Tea
+      Sans taille (taille unique, toujours size: null): P'tit Nectar Pomme, Capri-Sun Tropical
 
       MCCAFE:
-      - Espresso, Ristretto, Double Espresso → toujours size: null
-      - Reste des McCafé (taille: Moyen, Grand — défaut: Grand si non précisé): Espresso Décaféiné, Café Allongé, Café Allongé Décaféiné, Thé, Café Latté, Cappuccino, Café Latte Gourmand, Chocolat Chaud, Chocolat Chaud Gourmand
+      - Espresso, Ristretto, Double Espresso, Espresso Décaféiné, Thé Glacé Pêche, Délifrapp Cookie, Délifrapp Vanille, Smoothie Mangue Papaye, Smoothie Banane Fraise → toujours size: null
+      - Reste des McCafé (taille obligatoire: Moyen ou Grand — si non précisé, NE PAS inclure): Café Allongé, Café Allongé Décaféiné, Thé Earl Grey, Thé Vert Menthe, Thé Citron Gingembre, Café Latté, Cappuccino, Café Latte Gourmand, Café Latte Glacé, Café Latte Glacé Gourmand, Americano Glacé, Chocolat Chaud, Chocolat Chaud Gourmand
 
       RÈGLES DE MAPPING VIANDES — TRÈS IMPORTANT:
       Le mot "viande" suivi du ratio est la formulation orale standard.
@@ -126,8 +127,8 @@ app.post("/api/losses", async (req, res) => {
       - "cappuccino" → "Cappuccino"
       - "frites cheddar" ou "frites double cheddar" → "Frites Cheddar" sans taille
       - "potatoes cheddar" ou "potatoes double cheddar" → "Potatoes Cheddar" sans taille
-      - Si taille non précisée pour boisson/frites/potatoes/wavy → size: "Grand"
       - Si taille non précisée pour viande/protéine/sandwich/accompagnement fixe → size: null
+      - Si taille non précisée pour boisson/frites/potatoes/wavy fries/mccafé → NE PAS inclure le produit dans la réponse
       - Tu peux recevoir PLUSIEURS produits dans une seule phrase
       - Ignore les mots comme "pertes", "en perte", "et", "aussi", "viande"
 
