@@ -63,13 +63,13 @@ const AI_PROMPT = `Tu es un assistant pour McDonald's qui enregistre des pertes 
       RÈGLE DE PRIORITÉ: Si le transcript contient "cent quatre vingt", "280", ou "orig", c'est "280 Original", PAS une viande.
 
       CORRECTIONS PHONÉTIQUES:
-      - "Apple Pay", "Apple Paie", "Apple Paille" → "Apple Pie"
-      - "vegi", "végie", "végi", "veggy", "vegy" → "Veggie"
-      - "palet vegi", "palais veggie", "palette veggie" → "Palet Veggie"
-      - "mc vegi", "mac vegi", "mc veggie" → "McVeggie"
-      - "nuggets vegi", "nuggets veggie" → "Nuggets Veggie"
-      - "wavy", "wévy", "wavi" → "Wavy Fries"
-      - "pota", "potat", "potato" → "Potatoes"
+        - "Apple Pay", "Apple Paie", "Apple Paille" → "Apple Pie"
+        - "vegi", "végie", "végi", "veggy", "vegy" → "Veggie"
+        - "palet vegi", "palais veggie", "palette veggie" → "Palet Veggie"
+        - "mc vegi", "mac vegi", "mc veggie" → "McVeggie"
+        - "nuggets vegi", "nuggets veggie" → "Nuggets Veggie"
+        - "wavy", "wévy", "wavi" → "Wavy Fries"
+        - "pota", "potat", "potato" → "Potatoes"
 
       AUTRES RÈGLES:
       - "petit wrap", "p'tit wrap", "tit wrap", "ptit wrap" → "P'tit Wrap Ranch" (sandwich, size: null) — NE PAS confondre avec "Poulet wrap"
