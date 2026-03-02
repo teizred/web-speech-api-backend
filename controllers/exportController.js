@@ -2,6 +2,7 @@ import { sql } from "../config/db.js";
 import { generateLossesPdf } from "../services/pdfService.js";
 import { transporter } from "../config/mailer.js";
 import { PassThrough } from "stream";
+import { emailSchema } from "../config/schemas.js";
 
 // Ici on gère l'export en PDF direct
 export const exportPdf = async (req, res) => {
@@ -30,9 +31,12 @@ export const exportPdf = async (req, res) => {
 
 // Ici on gère l'envoi du rapport par email
 export const exportEmail = async (req, res) => {
+  const parsed = emailSchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.issues[0].message });
+
   try {
-    const { email } = req.body;
-    
+    const { email } = parsed.data;
+
     // Pareil, on récupère les pertes du jour
     const losses = await sql`
       SELECT * FROM losses 

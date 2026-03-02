@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { initDb } from "./config/db.js";
 import lossRoutes from "./routes/lossRoutes.js";
 import exportRoutes from "./routes/exportRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 
 // On charge les variables d'environnement (.env)
 dotenv.config();
@@ -33,6 +34,7 @@ initDb().catch((err) => console.error("Database initialization failed:", err));
 
 app.use("/api/losses", lossRoutes);
 app.use("/api/export", exportRoutes);
+app.use("/api/products", productRoutes);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, "0.0.0.0", () => {
