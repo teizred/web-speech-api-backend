@@ -40,6 +40,13 @@ app.use("/api/export", exportRoutes);
 app.use("/api/products", productRoutes);
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server running on http://0.0.0.0:${PORT}`);
-});
+
+// En local on démarre le serveur normalement
+// Sur Vercel, l'app est exportée et gérée par la plateforme
+if (!process.env.VERCEL) {
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on http://0.0.0.0:${PORT}`);
+  });
+}
+
+export default app;
