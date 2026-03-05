@@ -1,13 +1,16 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 import { initDb } from "./config/db.js";
 import lossRoutes from "./routes/lossRoutes.js";
 import exportRoutes from "./routes/exportRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 
 // On charge les variables d'environnement (.env)
-dotenv.config();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 const app = express();
 

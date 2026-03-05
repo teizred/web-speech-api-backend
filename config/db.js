@@ -1,7 +1,10 @@
 import { neon } from "@neondatabase/serverless";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
-dotenv.config();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 
 // On crée la connexion à la base de données (PostgreSQL sur Neon)
 export const sql = neon(process.env.DATABASE_URL);
