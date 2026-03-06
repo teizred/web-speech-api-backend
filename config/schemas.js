@@ -3,8 +3,9 @@ import { z } from "zod";
 // Schéma pour un item de perte (utilisé par le batch et le manual)
 export const lossItemSchema = z.object({
   product: z.string().min(1, "Le nom du produit est requis"),
-  quantity: z.number().int().min(1, "La quantité doit être >= 1"),
-  size: z.enum(["Petit", "Moyen", "Grand"]).nullable(),
+  quantity: z.number().min(0, "La quantité doit être >= 0"),
+  size: z.string().nullable(),
+  unit: z.string().optional(),
 });
 
 // POST /api/losses (voix) et POST /api/losses/parse
@@ -20,13 +21,15 @@ export const batchSchema = z.object({
 // POST /api/losses/manual
 export const manualLossSchema = z.object({
   product: z.string().min(1),
-  quantity: z.number().int().min(1),
-  size: z.enum(["Petit", "Moyen", "Grand"]).nullable(),
+  quantity: z.number().min(0),
+  size: z.string().nullable(),
+  unit: z.string().optional(),
 });
 
 // PATCH /api/losses/:id
 export const updateLossSchema = z.object({
-  quantity: z.number().int().min(0, "La quantité ne peut pas être négative"),
+  quantity: z.number().min(0, "La quantité ne peut pas être négative"),
+  unit: z.string().optional(),
 });
 
 // POST /api/export/email
