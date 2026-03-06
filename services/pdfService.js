@@ -24,13 +24,20 @@ export const generateLossesPdf = (losses, stream) => {
   const colWidths = [250, 80, 80, 80];
   const headers = ["Produit", "Taille", "Quantité", "Heure"];
 
-  // On dessine les entêtes
-  let x = 50;
-  headers.forEach((header, i) => {
-    doc.text(header, x, startY, { width: colWidths[i], continued: false });
-    x += colWidths[i];
-  });
-  doc.moveDown();
+  // Fonction pour dessiner les entêtes du tableau
+  const drawHeaders = (y) => {
+    doc.fontSize(10).font("Helvetica-Bold");
+    let x = 50;
+    headers.forEach((header, i) => {
+      doc.text(header, x, y, { width: colWidths[i], continued: false });
+      x += colWidths[i];
+    });
+    doc.font("Helvetica"); // Reset font
+    doc.moveDown(0.5);
+  };
+
+  // Dessin initial des entêtes
+  drawHeaders(startY);
 
   // Helper pour formater la quantité avec l'unité
   const formatQuantity = (loss) => {
@@ -48,6 +55,12 @@ export const generateLossesPdf = (losses, stream) => {
 
   // On boucle sur chaque perte pour remplir le tableau
   losses.forEach((loss) => {
+    // Gestion manuelle du saut de page pour éviter les décalages de colonnes
+    if (doc.y > 700) {
+      doc.addPage();
+      drawHeaders(doc.y); // On remet les entêtes sur la nouvelle page
+    }
+    
     const currentY = doc.y;
 
     doc.text(loss.product, 50, currentY, { width: colWidths[0], continued: false });
@@ -69,12 +82,12 @@ export const generateLossesPdf = (losses, stream) => {
       { width: colWidths[3], continued: false }
     );
 
-    doc.moveDown(0.8);
+    doc.moveDown(1.2); // Un peu plus d'espace entre les lignes
   });
 
   const total = losses.length;
   doc.moveDown();
-  doc.fontSize(12).text(`Nombre de lignes de pertes : ${total}`, { align: "right" });
+  doc.fontSize(12).text(`Nombre de pertes : ${total}`, { align: "right" });
 
   doc.end();
   return doc;
