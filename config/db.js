@@ -16,8 +16,14 @@ export const initDb = async () => {
       id SERIAL PRIMARY KEY,
       name TEXT NOT NULL UNIQUE,
       category TEXT NOT NULL,
+      subcategory TEXT,
       sizes TEXT[]
     )
+  `;
+
+  // Ajoute la colonne subcategory si elle n'existe pas (pour les DB existantes)
+  await sql`
+    ALTER TABLE products ADD COLUMN IF NOT EXISTS subcategory TEXT
   `;
 
   await sql`
