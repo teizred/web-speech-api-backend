@@ -17,23 +17,28 @@ export const initDb = async () => {
       name TEXT NOT NULL UNIQUE,
       category TEXT NOT NULL,
       subcategory TEXT,
-      sizes TEXT[]
+      sizes TEXT[],
+      unit_type TEXT DEFAULT 'unit'
     )
   `;
 
-  // Ajoute la colonne subcategory si elle n'existe pas (pour les DB existantes)
-  await sql`
-    ALTER TABLE products ADD COLUMN IF NOT EXISTS subcategory TEXT
-  `;
+  // Migrations pour les colonnes manquantes
+  await sql`ALTER TABLE products ADD COLUMN IF NOT EXISTS subcategory TEXT`;
+  await sql`ALTER TABLE products ADD COLUMN IF NOT EXISTS unit_type TEXT DEFAULT 'unit'`;
 
   await sql`
     CREATE TABLE IF NOT EXISTS losses (
       id SERIAL PRIMARY KEY,
       product TEXT NOT NULL,
-      quantity INTEGER NOT NULL,
+      quantity FLOAT NOT NULL,
       size TEXT,
+      unit TEXT DEFAULT 'unit',
       created_at TIMESTAMP DEFAULT NOW()
     )
   `;
+
+  // Migration pour la colonne unit dans losses et changement de type pour quantity (INTEGER -> FLOAT)
+  await sql`ALTER TABLE losses ADD COLUMN IF NOT EXISTS unit TEXT DEFAULT 'unit'`;
+  await sql`ALTER TABLE losses ALTER COLUMN quantity TYPE FLOAT`;
 };
 

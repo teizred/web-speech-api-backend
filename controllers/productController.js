@@ -1,7 +1,20 @@
 import { sql } from "../config/db.js";
 
 // Catégorie order + emojis pour l'affichage
-const CATEGORY_ORDER = ["Viandes", "Protéines", "Sandwichs", "Accompagnements", "Boissons", "McCafé"];
+const CATEGORY_ORDER = [
+  "Viandes", 
+  "Protéines", 
+  "Sandwichs", 
+  "Accompagnements", 
+  "Boissons", 
+  "McCafé",
+  "Pains Cuisine",
+  "Garnitures",
+  "Sauces Cuisine",
+  "Cuisine Autre",
+  "Campagnes"
+];
+
 const CATEGORY_EMOJIS = {
   "Viandes": "🥩",
   "Protéines": "🍗",
@@ -9,6 +22,11 @@ const CATEGORY_EMOJIS = {
   "Accompagnements": "🍟",
   "Boissons": "🥤",
   "McCafé": "☕",
+  "Pains Cuisine": "🥖",
+  "Garnitures": "🥗",
+  "Sauces Cuisine": "🍯",
+  "Cuisine Autre": "🍳",
+  "Campagnes": "✨",
 };
 
 // Récupère tous les produits depuis la base, groupés par catégorie avec sous-catégories
@@ -36,6 +54,7 @@ export const getProducts = async (req, res) => {
         name: product.name,
         sizes: product.sizes || null,
         subcategory: product.subcategory || null,
+        unit_type: product.unit_type || 'unit',
       };
 
       // On ajoute le produit à la bonne sous-catégorie

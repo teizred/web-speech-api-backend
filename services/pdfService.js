@@ -32,6 +32,20 @@ export const generateLossesPdf = (losses, stream) => {
   });
   doc.moveDown();
 
+  // Helper pour formater la quantité avec l'unité
+  const formatQuantity = (loss) => {
+    if (loss.unit_type === 'weight') {
+      if (loss.quantity >= 1000) {
+        return `${(loss.quantity / 1000).toFixed(2)} kg`;
+      }
+      return `${loss.quantity} g`;
+    }
+    if (loss.unit_type === 'pieces') {
+      return `${loss.quantity} pc`;
+    }
+    return loss.quantity.toString();
+  };
+
   // On boucle sur chaque perte pour remplir le tableau
   losses.forEach((loss) => {
     const currentY = doc.y;
@@ -41,7 +55,7 @@ export const generateLossesPdf = (losses, stream) => {
       width: colWidths[1],
       continued: false,
     });
-    doc.text(loss.quantity.toString(), 50 + colWidths[0] + colWidths[1], currentY, {
+    doc.text(formatQuantity(loss), 50 + colWidths[0] + colWidths[1], currentY, {
       width: colWidths[2],
       continued: false,
     });
@@ -58,9 +72,9 @@ export const generateLossesPdf = (losses, stream) => {
     doc.moveDown(0.8);
   });
 
-  const total = losses.reduce((sum, l) => sum + l.quantity, 0);
+  const total = losses.length;
   doc.moveDown();
-  doc.fontSize(12).text(`Total des pertes : ${total}`, { align: "right" });
+  doc.fontSize(12).text(`Nombre de lignes de pertes : ${total}`, { align: "right" });
 
   doc.end();
   return doc;

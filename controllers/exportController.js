@@ -9,9 +9,11 @@ export const exportPdf = async (req, res) => {
   try {
     // On récupère toutes les pertes de la journée
     const losses = await sql`
-      SELECT * FROM losses 
-      WHERE created_at::date = CURRENT_DATE
-      ORDER BY product, size
+      SELECT l.*, p.unit_type 
+      FROM losses l
+      LEFT JOIN products p ON l.product = p.name
+      WHERE l.created_at::date = CURRENT_DATE
+      ORDER BY l.product, l.size
     `;
 
     // On prépare la réponse pour que le navigateur comprenne que c'est un fichier PDF
@@ -37,11 +39,13 @@ export const exportEmail = async (req, res) => {
   try {
     const { email } = parsed.data;
 
-    // Pareil, on récupère les pertes du jour
+    // On récupère toutes les pertes de la journée avec leur type d'unité
     const losses = await sql`
-      SELECT * FROM losses 
-      WHERE created_at::date = CURRENT_DATE
-      ORDER BY product, size
+      SELECT l.*, p.unit_type 
+      FROM losses l
+      LEFT JOIN products p ON l.product = p.name
+      WHERE l.created_at::date = CURRENT_DATE
+      ORDER BY l.product, l.size
     `;
 
     // Truc un peu technique : on crée un flux (stream) pour transformer le PDF en buffer
