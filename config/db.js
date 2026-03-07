@@ -43,11 +43,9 @@ export const initDb = async () => {
   await sql`ALTER TABLE losses ADD COLUMN IF NOT EXISTS unit TEXT DEFAULT 'unit'`;
   await sql`ALTER TABLE losses ALTER COLUMN quantity TYPE FLOAT`;
   
-  // On force le fuseau horaire Europe/Paris pour l'utilisateur Neon
+  // On force le fuseau horaire Europe/Paris pour la session
   try {
-    const [{ current_user: user }] = await sql`SELECT current_user`;
-    await sql`ALTER ROLE ${sql(user)} SET timezone TO 'Europe/Paris'`;
-    await sql`SET timezone TO 'Europe/Paris'`; // Pour la session actuelle
+    await sql`SET timezone TO 'Europe/Paris'`;
   } catch (e) {
     console.error("⚠️ Impossible de forcer le fuseau horaire :", e.message);
   }
