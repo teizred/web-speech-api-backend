@@ -53,5 +53,11 @@ export const initDb = async () => {
   // Finalisation du type et de la valeur par défaut pour created_at
   await sql`ALTER TABLE losses ALTER COLUMN created_at TYPE TIMESTAMPTZ USING created_at AT TIME ZONE 'UTC'`;
   await sql`ALTER TABLE losses ALTER COLUMN created_at SET DEFAULT (CURRENT_TIMESTAMP AT TIME ZONE 'Europe/Paris')`;
+
+  // Index unique pour éviter les doublons (même produit, même taille, même jour sur Paris)
+  await sql`
+    CREATE UNIQUE INDEX IF NOT EXISTS idx_losses_unique_daily 
+    ON losses (product, COALESCE(size, ''), (created_at AT TIME ZONE 'Europe/Paris')::date)
+  `;
 };
 

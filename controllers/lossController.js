@@ -27,16 +27,38 @@ export const createLossAI = async (req, res) => {
 
     const savedLosses = [];
     for (const item of items) {
-      const [loss] = await sql`
-        INSERT INTO losses (product, quantity, size)
-        VALUES (${item.product}, ${item.quantity}, ${item.size})
-        RETURNING *
+      const { product, quantity, size } = item;
+
+      // Vérifier s'il existe déjà une perte pour ce produit/taille aujourd'hui
+      const existing = await sql`
+        SELECT * FROM losses 
+        WHERE product = ${product} 
+        AND ${size === null ? sql`size IS NULL` : sql`size = ${size}`}
+        AND (created_at AT TIME ZONE 'Europe/Paris')::date = (NOW() AT TIME ZONE 'Europe/Paris')::date
+        LIMIT 1
       `;
-      savedLosses.push(loss);
+
+      if (existing.length > 0) {
+        const newQuantity = existing[0].quantity + quantity;
+        const [loss] = await sql`
+          UPDATE losses 
+          SET quantity = ${newQuantity}
+          WHERE id = ${existing[0].id}
+          RETURNING *
+        `;
+        savedLosses.push(loss);
+      } else {
+        const [loss] = await sql`
+          INSERT INTO losses (product, quantity, size)
+          VALUES (${product}, ${quantity}, ${size})
+          RETURNING *
+        `;
+        savedLosses.push(loss);
+      }
     }
     res.json(savedLosses);
   } catch (error) {
-    console.error("Error getLosses:", error.message);
+    console.error("Error createLossAI:", error.message);
     res.status(500).json({ error: error.message });
   }
 };
