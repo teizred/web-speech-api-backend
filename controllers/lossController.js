@@ -7,12 +7,12 @@ export const getLosses = async (req, res) => {
   try {
     const losses = await sql`
       SELECT * FROM losses 
-      WHERE created_at::date = CURRENT_DATE
+      WHERE (created_at AT TIME ZONE 'Europe/Paris')::date = (NOW() AT TIME ZONE 'Europe/Paris')::date
       ORDER BY created_at DESC
     `;
     res.json(losses);
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error("Error getLosses:", error.message);
     res.status(500).json({ error: error.message });
   }
 };
@@ -36,7 +36,7 @@ export const createLossAI = async (req, res) => {
     }
     res.json(savedLosses);
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error("Error getLosses:", error.message);
     res.status(500).json({ error: error.message });
   }
 };
@@ -54,7 +54,7 @@ export const createLossManual = async (req, res) => {
       SELECT * FROM losses 
       WHERE product = ${product} 
       AND ${size === null ? sql`size IS NULL` : sql`size = ${size}`}
-      AND created_at::date = CURRENT_DATE
+      AND (created_at AT TIME ZONE 'Europe/Paris')::date = (NOW() AT TIME ZONE 'Europe/Paris')::date
       LIMIT 1
     `;
 
@@ -76,7 +76,7 @@ export const createLossManual = async (req, res) => {
       res.json(loss);
     }
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error("Error getLosses:", error.message);
     res.status(500).json({ error: error.message });
   }
 };
@@ -104,7 +104,7 @@ export const updateLoss = async (req, res) => {
       res.json(loss);
     }
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error("Error getLosses:", error.message);
     res.status(500).json({ error: error.message });
   }
 };
@@ -118,7 +118,7 @@ export const parseLossAI = async (req, res) => {
     const items = await parseTranscript(parsed.data.transcript);
     res.json(items);
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error("Error getLosses:", error.message);
     res.status(500).json({ error: error.message });
   }
 };
@@ -136,7 +136,7 @@ export const createLossBatch = async (req, res) => {
         SELECT * FROM losses 
         WHERE product = ${item.product} 
         AND ${item.size === null ? sql`size IS NULL` : sql`size = ${item.size}`}
-        AND created_at::date = CURRENT_DATE
+        AND (created_at AT TIME ZONE 'Europe/Paris')::date = (NOW() AT TIME ZONE 'Europe/Paris')::date
         LIMIT 1
       `;
 
@@ -160,7 +160,7 @@ export const createLossBatch = async (req, res) => {
     }
     res.json(savedLosses);
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error("Error getLosses:", error.message);
     res.status(500).json({ error: error.message });
   }
 };
@@ -170,11 +170,11 @@ export const resetLosses = async (req, res) => {
   try {
     await sql`
       DELETE FROM losses 
-      WHERE created_at::date = CURRENT_DATE
+      WHERE (created_at AT TIME ZONE 'Europe/Paris')::date = (NOW() AT TIME ZONE 'Europe/Paris')::date
     `;
     res.json({ message: "Pertes du jour supprimées" });
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error("Error getLosses:", error.message);
     res.status(500).json({ error: error.message });
   }
 };

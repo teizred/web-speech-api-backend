@@ -12,7 +12,7 @@ export const exportPdf = async (req, res) => {
       SELECT l.*, p.unit_type 
       FROM losses l
       LEFT JOIN products p ON l.product = p.name
-      WHERE l.created_at::date = CURRENT_DATE
+      WHERE (l.created_at AT TIME ZONE 'Europe/Paris')::date = (NOW() AT TIME ZONE 'Europe/Paris')::date
       ORDER BY l.product, l.size
     `;
 
@@ -44,7 +44,7 @@ export const exportEmail = async (req, res) => {
       SELECT l.*, p.unit_type 
       FROM losses l
       LEFT JOIN products p ON l.product = p.name
-      WHERE l.created_at::date = CURRENT_DATE
+      WHERE (l.created_at AT TIME ZONE 'Europe/Paris')::date = (NOW() AT TIME ZONE 'Europe/Paris')::date
       ORDER BY l.product, l.size
     `;
 

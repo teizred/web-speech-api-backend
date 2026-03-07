@@ -12,7 +12,8 @@ const CATEGORY_ORDER = [
   "Garnitures",
   "Sauces Cuisine",
   "Cuisine Autre",
-  "Campagnes"
+  "Campagnes",
+  "Ingrédients Boissons"
 ];
 
 const CATEGORY_EMOJIS = {
@@ -27,15 +28,27 @@ const CATEGORY_EMOJIS = {
   "Sauces Cuisine": "🍯",
   "Cuisine Autre": "🍳",
   "Campagnes": "✨",
+  "Ingrédients Boissons": "🧪",
 };
 
 // Récupère tous les produits depuis la base, groupés par catégorie avec sous-catégories
 export const getProducts = async (req, res) => {
+  const { type } = req.query; // 'vide' ou 'complet'
+  
   try {
-    const products = await sql`
-      SELECT * FROM products 
-      ORDER BY category, subcategory, name
-    `;
+    let products;
+    if (type) {
+      products = await sql`
+        SELECT * FROM products 
+        WHERE loss_type = ${type}
+        ORDER BY category, subcategory, name
+      `;
+    } else {
+      products = await sql`
+        SELECT * FROM products 
+        ORDER BY category, subcategory, name
+      `;
+    }
 
     // On regroupe par catégorie avec sous-catégories pour le frontend
     const grouped = {};

@@ -18,13 +18,15 @@ export const initDb = async () => {
       category TEXT NOT NULL,
       subcategory TEXT,
       sizes TEXT[],
-      unit_type TEXT DEFAULT 'unit'
+      unit_type TEXT DEFAULT 'unit',
+      loss_type TEXT DEFAULT 'complet'
     )
   `;
 
   // Migrations pour les colonnes manquantes
   await sql`ALTER TABLE products ADD COLUMN IF NOT EXISTS subcategory TEXT`;
   await sql`ALTER TABLE products ADD COLUMN IF NOT EXISTS unit_type TEXT DEFAULT 'unit'`;
+  await sql`ALTER TABLE products ADD COLUMN IF NOT EXISTS loss_type TEXT DEFAULT 'complet'`;
 
   await sql`
     CREATE TABLE IF NOT EXISTS losses (
@@ -33,12 +35,25 @@ export const initDb = async () => {
       quantity FLOAT NOT NULL,
       size TEXT,
       unit TEXT DEFAULT 'unit',
-      created_at TIMESTAMP DEFAULT NOW()
+      created_at TIMESTAMPTZ DEFAULT NOW()
     )
   `;
 
   // Migration pour la colonne unit dans losses et changement de type pour quantity (INTEGER -> FLOAT)
   await sql`ALTER TABLE losses ADD COLUMN IF NOT EXISTS unit TEXT DEFAULT 'unit'`;
   await sql`ALTER TABLE losses ALTER COLUMN quantity TYPE FLOAT`;
+  
+  // On force le fuseau horaire Europe/Paris pour l'utilisateur Neon
+  try {
+    const [{ current_user: user }] = await sql`SELECT current_user`;
+    await sql`ALTER ROLE ${sql(user)} SET timezone TO 'Europe/Paris'`;
+    await sql`SET timezone TO 'Europe/Paris'`; // Pour la session actuelle
+  } catch (e) {
+    console.error("⚠️ Impossible de forcer le fuseau horaire :", e.message);
+  }
+
+  // Finalisation du type et de la valeur par défaut pour created_at
+  await sql`ALTER TABLE losses ALTER COLUMN created_at TYPE TIMESTAMPTZ USING created_at AT TIME ZONE 'UTC'`;
+  await sql`ALTER TABLE losses ALTER COLUMN created_at SET DEFAULT (CURRENT_TIMESTAMP AT TIME ZONE 'Europe/Paris')`;
 };
 
