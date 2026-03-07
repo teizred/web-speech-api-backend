@@ -68,13 +68,14 @@ export const exportEmail = async (req, res) => {
     const pdfBuffer = await pdfPromise;
 
     // On envoie le mail avec Nodemailer
-    await getTransporter().sendMail({
+    console.log(`Sending email to: ${email}...`);
+    const info = await getTransporter().sendMail({
       from: `"Pertes McDo" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: `Pertes McDonald's - ${new Date().toLocaleDateString("fr-FR")}`,
       text: `Bonjour,\n\nVeuillez trouver ci-joint le rapport des pertes du ${new Date().toLocaleDateString(
         "fr-FR"
-      )}.\n\nTotal : ${losses.reduce((sum, l) => sum + l.quantity, 0)} articles.\n\nCordialement.`,
+      )}.\n\nNombre d'articles/saisies : ${losses.length}.\n\nCordialement.`,
       attachments: [
         {
           filename: `pertes-mcdo-${new Date().toISOString().split("T")[0]}.pdf`,
@@ -82,6 +83,7 @@ export const exportEmail = async (req, res) => {
         },
       ],
     });
+    console.log(`Email sent successfully: ${info.messageId}`);
 
     res.json({ message: "Email envoyé avec succès" });
   } catch (error) {
