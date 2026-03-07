@@ -45,7 +45,7 @@ export const initDb = async () => {
   
   // On force le fuseau horaire Europe/Paris pour la session
   try {
-    await sql`SET timezone TO 'Europe/Paris'`;
+    await sql.query("SET timezone TO 'Europe/Paris'");
   } catch (e) {
     console.error("⚠️ Impossible de forcer le fuseau horaire :", e.message);
   }
@@ -57,7 +57,7 @@ export const initDb = async () => {
   // Index unique pour éviter les doublons (même produit, même taille, même jour sur Paris)
   await sql`
     CREATE UNIQUE INDEX IF NOT EXISTS idx_losses_unique_daily 
-    ON losses (product, COALESCE(size, ''), (created_at AT TIME ZONE 'Europe/Paris')::date)
+    ON losses (product, (COALESCE(size, '')), (CAST(created_at AT TIME ZONE 'Europe/Paris' AS date)))
   `;
 };
 
