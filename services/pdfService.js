@@ -41,14 +41,17 @@ export const generateLossesPdf = (losses, stream) => {
 
   // Helper pour formater la quantité avec l'unité
   const formatQuantity = (loss) => {
-    if (loss.unit_type === 'weight') {
+    if (loss.unit_type === "weight") {
       if (loss.quantity >= 1000) {
         return `${(loss.quantity / 1000).toFixed(2)} kg`;
       }
       return `${loss.quantity} g`;
     }
-    if (loss.unit_type === 'pieces') {
+    if (loss.unit_type === "pieces") {
       return `${loss.quantity} pc`;
+    }
+    if (loss.unit_type === "liquid") {
+      return `${loss.quantity} ml`;
     }
     return loss.quantity.toString();
   };
