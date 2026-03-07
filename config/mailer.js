@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -6,16 +6,23 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 
-// On utilise Resend (API HTTP) au lieu de Nodemailer (SMTP)
-// car les hébergeurs cloud comme Railway/Vercel bloquent le SMTP
-let _resend = null;
+// On utilise Nodemailer avec SMTP (Gmail)
+// EMAIL_USER et EMAIL_PASS sont définis dans le .env
+let _transporter = null;
 
-export const getResend = () => {
-  if (!_resend) {
-    if (!process.env.RESEND_API_KEY) {
-      throw new Error("RESEND_API_KEY manquante. Ajoutez-la dans vos variables d'environnement.");
+export const getTransporter = () => {
+  if (!_transporter) {
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      throw new Error("Identifiants email (EMAIL_USER/EMAIL_PASS) manquants dans le .env.");
     }
-    _resend = new Resend(process.env.RESEND_API_KEY);
+
+    _transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
   }
-  return _resend;
+  return _transporter;
 };

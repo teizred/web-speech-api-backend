@@ -1,6 +1,6 @@
 import { sql } from "../config/db.js";
 import { generateLossesPdf } from "../services/pdfService.js";
-import { getResend } from "../config/mailer.js";
+import { getTransporter } from "../config/mailer.js";
 import { PassThrough } from "stream";
 import { emailSchema } from "../config/schemas.js";
 
@@ -67,9 +67,9 @@ export const exportEmail = async (req, res) => {
     // On attend que le PDF soit entièrement généré
     const pdfBuffer = await pdfPromise;
 
-    // On envoie le mail avec Resend (API HTTP, fonctionne sur tous les hébergeurs)
-    const { error } = await getResend().emails.send({
-      from: process.env.EMAIL_FROM || "Pertes McDo <onboarding@resend.dev>",
+    // On envoie le mail avec Nodemailer
+    await getTransporter().sendMail({
+      from: `"Pertes McDo" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: `Pertes McDonald's - ${new Date().toLocaleDateString("fr-FR")}`,
       text: `Bonjour,\n\nVeuillez trouver ci-joint le rapport des pertes du ${new Date().toLocaleDateString(
@@ -78,12 +78,10 @@ export const exportEmail = async (req, res) => {
       attachments: [
         {
           filename: `pertes-mcdo-${new Date().toISOString().split("T")[0]}.pdf`,
-          content: pdfBuffer.toString("base64"),
+          content: pdfBuffer,
         },
       ],
     });
-
-    if (error) throw new Error(error.message);
 
     res.json({ message: "Email envoyé avec succès" });
   } catch (error) {
