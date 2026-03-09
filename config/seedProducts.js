@@ -94,6 +94,15 @@ const PRODUCTS = [
   // McCafé Ingrédients (Produit McCafé Vide)
   { name: "Café Segafredo", category: "McCafé", subcategory: "Ingrédients", sizes: null, unit_type: "weight", loss_type: "vide" },
   { name: "Lait demi-écrémé", category: "McCafé", subcategory: "Ingrédients", sizes: null, unit_type: "liquid", loss_type: "vide" },
+  { name: "Coulis Choconuts", category: "McCafé", subcategory: "Ingrédients", sizes: null, unit_type: "liquid", loss_type: "vide" },
+  { name: "Poudre Chocolat Monbana", category: "McCafé", subcategory: "Ingrédients", sizes: null, unit_type: "weight", loss_type: "vide" },
+  { name: "Base Multifruits pour Smoothie", category: "McCafé", subcategory: "Ingrédients", sizes: null, unit_type: "liquid", loss_type: "vide" },
+  { name: "Poudre Délifrapp'", category: "McCafé", subcategory: "Ingrédients", sizes: null, unit_type: "weight", loss_type: "vide" },
+  { name: "Fruits Fraise/Banane", category: "McCafé", subcategory: "Ingrédients", sizes: null, unit_type: "unit", loss_type: "vide" },
+  { name: "Fruits Mangue/Papaye", category: "McCafé", subcategory: "Ingrédients", sizes: null, unit_type: "unit", loss_type: "vide" },
+  { name: "Thés Clipper Earl Grey", category: "McCafé", subcategory: "Ingrédients", sizes: null, unit_type: "unit", loss_type: "vide" },
+  { name: "Thés Clipper Vert Menthe", category: "McCafé", subcategory: "Ingrédients", sizes: null, unit_type: "unit", loss_type: "vide" },
+  { name: "Thés Clipper Infusion Citron/Gingembre", category: "McCafé", subcategory: "Ingrédients", sizes: null, unit_type: "unit", loss_type: "vide" },
   { name: "Croissant", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "unit", loss_type: "vide" },
   { name: "Pain au Chocolat", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "unit", loss_type: "vide" },
   { name: "Donut sucré", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "unit", loss_type: "vide" },
@@ -114,15 +123,15 @@ const PRODUCTS = [
   { name: "Cookie Framboise", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "unit", loss_type: "vide" },
   { name: "Cookie Caramel Pécan", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "unit", loss_type: "vide" },
   { name: "Cinnamon Roll", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "unit", loss_type: "vide" },
-  { name: "Cheesecake Choconuts M&M'S", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "unit", loss_type: "vide" },
+  { name: "Cheesecake Nature", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "unit", loss_type: "vide" },
 
   // --- PERTES COMPLÈTES (Produits finis) ---
 
   // Sandwichs
   { name: "Big Mac", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "Big Mac Bacon", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "Big Tasty 1 steak", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "Big Tasty 2 steaks", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Big Tasty 1v", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Big Tasty 2v", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "280 Original", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "Royal Cheese", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "Royal Deluxe", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "unit", loss_type: "complet" },
@@ -140,14 +149,20 @@ const PRODUCTS = [
   { name: "McChicken", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "P'tit Chicken", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "P'tit Wrap Ranch", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "P'tit Wrap Ranch Veggie", category: "Sandwichs", subcategory: "Veggie", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "P'tit Wrap New York", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "P'tit Wrap New York Veggie", category: "Sandwichs", subcategory: "Veggie", sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "Boite de Nuggets", category: "Sandwichs", subcategory: "Poulet", sizes: ["x4", "x6", "x9", "x20"], unit_type: "unit", loss_type: "complet" },
   { name: "Filet-O-Fish", category: "Sandwichs", subcategory: "Poisson", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Double Filet-O-Fish", category: "Sandwichs", subcategory: "Poisson", sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "McFish", category: "Sandwichs", subcategory: "Poisson", sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "McFish Mayo", category: "Sandwichs", subcategory: "Poisson", sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "Fish New York", category: "Sandwichs", subcategory: "Poisson", sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "Double Fish New York", category: "Sandwichs", subcategory: "Poisson", sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "McWrap Smoky Ranch", category: "Sandwichs", subcategory: "Wraps", sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "McWrap New York", category: "Sandwichs", subcategory: "Wraps", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Fish New York 1F", category: "Sandwichs", subcategory: "Poisson", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Fish New York 2F", category: "Sandwichs", subcategory: "Poisson", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "McExtreme 1v", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "McExtreme 2v", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "McWrap Smoky Ranch", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "McWrap New York", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "McVeggie", category: "Sandwichs", subcategory: "Veggie", sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "McWrap Veggie", category: "Sandwichs", subcategory: "Veggie", sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "Boite de Nuggets veggie", category: "Sandwichs", subcategory: "Veggie", sizes: ["x4", "x6", "x9", "x20"], unit_type: "unit", loss_type: "complet" },
@@ -158,12 +173,14 @@ const PRODUCTS = [
 
   // Accompagnements
   { name: "Frites", category: "Accompagnements", subcategory: "Frites", sizes: ["Petit", "Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
-  { name: "Frites Cheddar", category: "Accompagnements", subcategory: "Frites", sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "Frites Bacon", category: "Accompagnements", subcategory: "Frites", sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "Wavy Fries", category: "Accompagnements", subcategory: "Frites", sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
+  { name: "Frites Cheddar Bacon", category: "Accompagnements", subcategory: "Frites", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Frites Double Cheddar", category: "Accompagnements", subcategory: "Frites", sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "Potatoes", category: "Accompagnements", subcategory: "Potatoes", sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
-  { name: "Potatoes Cheddar", category: "Accompagnements", subcategory: "Potatoes", sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "Potatoes Bacon", category: "Accompagnements", subcategory: "Potatoes", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Potatoes Cheddar Bacon", category: "Accompagnements", subcategory: "Potatoes", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Potatoes Double Cheddar", category: "Accompagnements", subcategory: "Potatoes", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "P'tite Salade", category: "Accompagnements", subcategory: "Salades", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Salade Caesar", category: "Accompagnements", subcategory: "Salades", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Salade Veggie", category: "Accompagnements", subcategory: "Salades", sizes: null, unit_type: "unit", loss_type: "complet" },
 
   // Boissons
   { name: "Coca-Cola", category: "Boissons", subcategory: "Sodas", sizes: ["Petit", "Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
@@ -181,28 +198,41 @@ const PRODUCTS = [
   { name: "Eau Pétillante", category: "Boissons", subcategory: "Eaux", sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
 
   // McCafé
+  { name: "Sundae Chocolat", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Sundae Caramel", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Sundae Pistache", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Sundae Affogato", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "P'tit Sundae Chocolat", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "P'tit Sundae Caramel", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "McFlurry KitKat", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "McFlurry M&M's", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "McFlurry Daim", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "McFlurry Oreo", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "McFlurry Shortbread", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Milkshake", category: "Desserts", subcategory: "Milshake", sizes: ["Vanille", "Fraise", "Café"], unit_type: "unit", loss_type: "complet" },
+  { name: "Milkshake Chantilly", category: "Desserts", subcategory: "Milshake", sizes: ["Vanille", "Fraise", "Café"], unit_type: "unit", loss_type: "complet" },
+  { name: "P'tit Ice Squeeze (Vanille)", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Berlingot Pomme Pêche", category: "Desserts", subcategory: "Fruits", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Bio à boire", category: "Desserts", subcategory: "Fruits", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "P'tite Pomme", category: "Desserts", subcategory: "Fruits", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "P'tit Ananas", category: "Desserts", subcategory: "Fruits", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "P'tits Carottes", category: "Desserts", subcategory: "Fruits", sizes: null, unit_type: "unit", loss_type: "complet" },
+  { name: "Duo Macaron Vanille/Caramel", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "unit", loss_type: "vide" },
+  { name: "Duo Macaron Chocolat/Framboise", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "unit", loss_type: "vide" },
+
+  // McCafé (Pertes Complètes)
   { name: "Ristretto", category: "McCafé", subcategory: null, sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "Espresso", category: "McCafé", subcategory: null, sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "Double Espresso", category: "McCafé", subcategory: null, sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "Espresso Décaféiné", category: "McCafé", subcategory: null, sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "Thé Glacé Pêche", category: "McCafé", subcategory: null, sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "Délifrapp Cookie", category: "McCafé", subcategory: null, sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "Délifrapp Vanille", category: "McCafé", subcategory: null, sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "Smoothie Mangue Papaye", category: "McCafé", subcategory: null, sizes: null, unit_type: "unit", loss_type: "complet" },
-  { name: "Smoothie Banane Fraise", category: "McCafé", subcategory: null, sizes: null, unit_type: "unit", loss_type: "complet" },
   { name: "Café Allongé", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
-  { name: "Café Allongé Décaféiné", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
-  { name: "Thé Earl Grey", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
-  { name: "Thé Vert Menthe", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
-  { name: "Thé Citron Gingembre", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
+  { name: "Cappucino", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
   { name: "Café Latté", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
-  { name: "Cappuccino", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
-  { name: "Café Latte Gourmand", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
-  { name: "Café Latte Glacé", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
-  { name: "Café Latte Glacé Gourmand", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
-  { name: "Americano Glacé", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
+  { name: "Café Latté Gourmand", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
   { name: "Chocolat Chaud", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
   { name: "Chocolat Chaud Gourmand", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
+  { name: "Thé Earl Grey", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
+  { name: "Thé Vert Menthe", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
+  { name: "Infusion Citron/Gingembre", category: "McCafé", subcategory: null, sizes: ["Moyen", "Grand"], unit_type: "unit", loss_type: "complet" },
 ];
 
 const seed = async () => {
@@ -210,6 +240,10 @@ const seed = async () => {
 
   // On crée la table si elle n'existe pas encore
   await initDb();
+
+  // On vide la table pour éviter les doublons avec des noms légèrement différents
+  console.log("Nettoyage de la base de données...");
+  await sql`TRUNCATE TABLE products CASCADE`;
 
   let inserted = 0;
   for (const product of PRODUCTS) {
