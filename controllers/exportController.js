@@ -9,11 +9,39 @@ export const exportPdf = async (req, res) => {
   try {
     // On récupère toutes les pertes de la journée
     const losses = await sql`
-      SELECT l.*, p.unit_type 
+      SELECT l.*, p.unit_type, p.loss_type, p.category, p.subcategory
       FROM losses l
       LEFT JOIN products p ON l.product = p.name
       WHERE (l.created_at AT TIME ZONE 'Europe/Paris')::date = (NOW() AT TIME ZONE 'Europe/Paris')::date
-      ORDER BY l.product, l.size
+      ORDER BY 
+        p.loss_type DESC, 
+        CASE 
+          WHEN p.loss_type = 'vide' THEN
+            CASE p.category
+              WHEN 'Viandes' THEN 1
+              WHEN 'Protéines' THEN 2
+              WHEN 'Pains Cuisine' THEN 3
+              WHEN 'McCafé' THEN 4
+              WHEN 'Sauces Cuisine' THEN 5
+              WHEN 'Garnitures' THEN 6
+              WHEN 'Cuisine Autre' THEN 7
+              ELSE 99
+            END
+          WHEN p.loss_type = 'complet' THEN
+            CASE p.category
+              WHEN 'Sandwichs' THEN 1
+              WHEN 'Accompagnements' THEN 2
+              WHEN 'Desserts' THEN 3
+              WHEN 'Boissons' THEN 4
+              WHEN 'McCafé' THEN 5
+              ELSE 99
+            END
+          ELSE 99
+        END,
+        p.category,
+        p.subcategory, 
+        l.product, 
+        l.size
     `;
 
     // On prépare la réponse pour que le navigateur comprenne que c'est un fichier PDF
@@ -41,11 +69,39 @@ export const exportEmail = async (req, res) => {
 
     // On récupère toutes les pertes de la journée avec leur type d'unité
     const losses = await sql`
-      SELECT l.*, p.unit_type 
+      SELECT l.*, p.unit_type, p.loss_type, p.category, p.subcategory
       FROM losses l
       LEFT JOIN products p ON l.product = p.name
       WHERE (l.created_at AT TIME ZONE 'Europe/Paris')::date = (NOW() AT TIME ZONE 'Europe/Paris')::date
-      ORDER BY l.product, l.size
+      ORDER BY 
+        p.loss_type DESC, 
+        CASE 
+          WHEN p.loss_type = 'vide' THEN
+            CASE p.category
+              WHEN 'Viandes' THEN 1
+              WHEN 'Protéines' THEN 2
+              WHEN 'Pains Cuisine' THEN 3
+              WHEN 'McCafé' THEN 4
+              WHEN 'Sauces Cuisine' THEN 5
+              WHEN 'Garnitures' THEN 6
+              WHEN 'Cuisine Autre' THEN 7
+              ELSE 99
+            END
+          WHEN p.loss_type = 'complet' THEN
+            CASE p.category
+              WHEN 'Sandwichs' THEN 1
+              WHEN 'Accompagnements' THEN 2
+              WHEN 'Desserts' THEN 3
+              WHEN 'Boissons' THEN 4
+              WHEN 'McCafé' THEN 5
+              ELSE 99
+            END
+          ELSE 99
+        END,
+        p.category,
+        p.subcategory, 
+        l.product, 
+        l.size
     `;
 
     // Truc un peu technique : on crée un flux (stream) pour transformer le PDF en buffer
