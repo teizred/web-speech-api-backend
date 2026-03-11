@@ -58,9 +58,13 @@ const AI_PROMPT = `Tu es un assistant pour McDonald's qui enregistre des pertes 
       4. CONCENTRÉS: "Concentré orange" -> "Concentré Jus d'orange". "Concentré Oasis" -> "Concentré Oasis".
 
       MAPPING PHONÉTIQUE:
-      - "oignons royale", "oignon royal", "oignon" -> "Oignons royal"
-      - "oignons règ", "oignon reg", "reg", "règ" -> "Oignons reg"
-      - "gouda", "goudas", "fromage gouda" -> "Gouda"
+       VIANDES (CRITIQUE - ratios souvent mal transcrits par la voix):
+       - "10 pour 1", "dix pour un", "10 1", "dix un", "10:1", "dis pour un", "10 un", "dix 1", "101" -> "10:1"
+       - "4 pour 1", "quatre pour un", "4 1", "quatre un", "4:1", "quatre 1", "4 un", "41" -> "4:1"
+       - "3 pour 1", "trois pour un", "3 1", "trois un", "3:1", "trois 1", "3 un", "31" -> "3:1"
+       - "oignons royale", "oignon royal", "oignon" -> "Oignons royal"
+       - "oignons règ", "oignon reg", "reg", "règ" -> "Oignons reg"
+       - "gouda", "goudas", "fromage gouda" -> "Gouda"
       - "bacon", "bacons", "bacon court", "tranche bacon" -> "Bacon standard"
       - "pain royal", "pains royal" -> "Pain Royal"
       - "pain reg", "pain règle", "reg", "règ" -> "Pain Reg"
