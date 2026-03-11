@@ -66,7 +66,7 @@ export const generateLossesPdf = (losses, stream) => {
       currentCategory = null; 
       currentSubcategory = null;
       
-      const title = currentLossType === 'vide' ? "VIDE" : (currentLossType === 'complet' ? "COMPLET" : "AUTRE");
+      const title = currentLossType === 'vide' ? "PERTES VIDES" : (currentLossType === 'complet' ? "PERTES COMPLÈTES" : "AUTRE");
       doc.fontSize(9).font("Helvetica-Bold").fillColor("#dc2626");
       doc.text(`[ ${title} ]`, 25, doc.y, { align: "center" });
       doc.y += 5;
@@ -83,7 +83,7 @@ export const generateLossesPdf = (losses, stream) => {
       currentSubcategory = null;
       
       doc.fontSize(8).font("Helvetica-Bold").fillColor("#334155");
-      doc.text(`--- ${currentCategory.toUpperCase()} ---`, 25, doc.y);
+      doc.text(`- ${currentCategory.toUpperCase()}`, 25, doc.y);
       doc.y += 3;
     }
 
