@@ -1,13 +1,16 @@
 import PDFDocument from "pdfkit";
 
-export const generateLossesPdf = (losses, stream) => {
+export const generateLossesPdf = (losses, stream, date) => {
   const doc = new PDFDocument({ margin: 25 }); 
   doc.pipe(stream);
+
+  // Date à afficher (date fournie ou aujourd'hui)
+  const displayDate = date || new Date();
 
   // Titre ultra compact
   doc.fontSize(12).font("Helvetica-Bold").text("PERTES McDONALD'S", { align: "center" });
   doc.fontSize(8).font("Helvetica").text(
-    new Date().toLocaleDateString("fr-FR", {
+    displayDate.toLocaleDateString("fr-FR", {
       weekday: "long",
       day: "numeric",
       month: "long",

@@ -4,15 +4,22 @@ import { getTransporter } from "../config/mailer.js";
 import { PassThrough } from "stream";
 import { emailSchema } from "../config/schemas.js";
 
-// Ici on gère l'export en PDF direct
+// Ici on gère l'export en PDF direct (aujourd'hui ou une date spécifique)
 export const exportPdf = async (req, res) => {
   try {
+    const { date } = req.query; // ?date=YYYY-MM-DD (optionnel)
+    
+    // Condition de filtrage par date
+    const dateFilter = date 
+      ? sql`(l.created_at AT TIME ZONE 'Europe/Paris')::date = ${date}::date`
+      : sql`(l.created_at AT TIME ZONE 'Europe/Paris')::date = (NOW() AT TIME ZONE 'Europe/Paris')::date`;
+
     // On récupère toutes les pertes de la journée
     const losses = await sql`
       SELECT l.*, p.unit_type, p.loss_type, p.category, p.subcategory
       FROM losses l
       LEFT JOIN products p ON l.product = p.name
-      WHERE (l.created_at AT TIME ZONE 'Europe/Paris')::date = (NOW() AT TIME ZONE 'Europe/Paris')::date
+      WHERE ${dateFilter}
       ORDER BY 
         p.loss_type DESC, 
         CASE 
@@ -44,15 +51,17 @@ export const exportPdf = async (req, res) => {
         l.size
     `;
 
+    const pdfDate = date ? new Date(date + 'T12:00:00') : new Date();
+
     // On prépare la réponse pour que le navigateur comprenne que c'est un fichier PDF
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader(
       "Content-Disposition",
-      `attachment; filename=pertes-mcdo-${new Date().toISOString().split("T")[0]}.pdf`
+      `attachment; filename=pertes-mcdo-${date || new Date().toISOString().split("T")[0]}.pdf`
     );
 
     // On utilise notre service pour générer le PDF et on l'envoie direct dans la réponse
-    generateLossesPdf(losses, res);
+    generateLossesPdf(losses, res, pdfDate);
   } catch (error) {
     console.error("Error:", error.message);
     res.status(500).json({ error: error.message });

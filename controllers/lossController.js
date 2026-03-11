@@ -2,14 +2,27 @@ import { sql } from "../config/db.js";
 import { parseTranscript } from "../services/aiService.js";
 import { transcriptSchema, manualLossSchema, updateLossSchema, batchSchema } from "../config/schemas.js";
 
-// Ici on récupère toutes les pertes enregistrées aujourd'hui
+// Ici on récupère toutes les pertes enregistrées (aujourd'hui ou une date spécifique)
 export const getLosses = async (req, res) => {
   try {
-    const losses = await sql`
-      SELECT * FROM losses 
-      WHERE (created_at AT TIME ZONE 'Europe/Paris')::date = (NOW() AT TIME ZONE 'Europe/Paris')::date
-      ORDER BY created_at DESC
-    `;
+    const { date } = req.query; // ?date=YYYY-MM-DD (optionnel)
+    
+    let losses;
+    if (date) {
+      // Si une date est fournie, on filtre sur cette date
+      losses = await sql`
+        SELECT * FROM losses 
+        WHERE (created_at AT TIME ZONE 'Europe/Paris')::date = ${date}::date
+        ORDER BY created_at DESC
+      `;
+    } else {
+      // Sinon on prend aujourd'hui (comportement par défaut)
+      losses = await sql`
+        SELECT * FROM losses 
+        WHERE (created_at AT TIME ZONE 'Europe/Paris')::date = (NOW() AT TIME ZONE 'Europe/Paris')::date
+        ORDER BY created_at DESC
+      `;
+    }
     res.json(losses);
   } catch (error) {
     console.error("Error getLosses:", error.message);
