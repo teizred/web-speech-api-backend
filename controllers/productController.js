@@ -17,20 +17,20 @@ const CATEGORY_ORDER = [
   "Ingrédients Boissons"
 ];
 
-const CATEGORY_EMOJIS = {
-  "Viandes": "🥩",
-  "Protéines": "🍗",
-  "Sandwichs": "🥪",
-  "Accompagnements": "🍟",
-  "Desserts": "🍦",
-  "Boissons": "🥤",
-  "McCafé": "☕",
-  "Pains Cuisine": "🥖",
-  "Garnitures": "🥗",
-  "Sauces Cuisine": "🍯",
-  "Cuisine Autre": "🍳",
-  "Campagnes": "✨",
-  "Ingrédients Boissons": "🧪",
+const CATEGORY_ICONS = {
+  "Viandes": "/viandes.png",
+  "Protéines": "/proteins.png",
+  "Sandwichs": "/bigmac.png",
+  "Accompagnements": "/frites.png",
+  "Desserts": "/desserts.png",
+  "Boissons": "/boisson.png",
+  "McCafé": "/mccafe.png",
+  "Pains Cuisine": "/pains.png",
+  "Garnitures": "/salade.svg",
+  "Sauces Cuisine": "/sauce.png",
+  "Cuisine Autre": "/autre.png",
+  "Campagnes": "/campagne.png",
+  "Ingrédients Boissons": "/boissonbib.png",
 };
 
 // Récupère tous les produits depuis la base, groupés par catégorie avec sous-catégories
@@ -56,9 +56,9 @@ export const getProducts = async (req, res) => {
     const grouped = {};
     for (const product of products) {
       if (!grouped[product.category]) {
-        const emoji = CATEGORY_EMOJIS[product.category] || "";
         grouped[product.category] = {
-          label: `${emoji} ${product.category}`,
+          label: product.category,
+          icon: CATEGORY_ICONS[product.category] || null,
           subcategories: [],
           products: [],
         };
