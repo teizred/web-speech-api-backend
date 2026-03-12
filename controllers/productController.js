@@ -18,19 +18,19 @@ const CATEGORY_ORDER = [
 ];
 
 const CATEGORY_ICONS = {
-  "Viandes": "/viandes.png",
+  "Viandes": "🥩",
   "Protéines": "/proteins.png",
   "Sandwichs": "/bigmac.png",
   "Accompagnements": "/frites.png",
   "Desserts": "/desserts.png",
   "Boissons": "/boisson.png",
   "McCafé": "/mccafe.png",
-  "Pains Cuisine": "/pains.png",
-  "Garnitures": "/salade.svg",
+  "Pains Cuisine": "🍞",
+  "Garnitures": "🥗",
   "Sauces Cuisine": "/sauce.png",
-  "Cuisine Autre": "/autre.png",
-  "Campagnes": "/campagne.png",
-  "Ingrédients Boissons": "/boissonbib.png",
+  "Cuisine Autre": "🍳",
+  "Campagnes": "✨",
+  "Ingrédients Boissons": "📦",
 };
 
 // Récupère tous les produits depuis la base, groupés par catégorie avec sous-catégories
