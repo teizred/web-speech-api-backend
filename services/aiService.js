@@ -56,6 +56,7 @@ const AI_PROMPT = `Tu es un assistant pour McDonald's qui enregistre des pertes 
       2. TAILLES OBLIGATOIRES: Si "Frites" ou "Coca" sans taille -> NE PAS inclure.
       3. AMBIGUÏTÉS: "CBO" seul -> "Poulet CBO".
       4. CONCENTRÉS: "Concentré orange" -> "Concentré Jus d'orange". "Concentré Oasis" -> "Concentré Oasis".
+      5. PRODUITS INCONNUS: Si un produit dicté ne correspond à AUCUN produit de la liste officielle ci-dessus, l'ignorer complètement. Ne JAMAIS inventer ou approximer un nom de produit qui n'existe pas dans la liste. Le tableau JSON final ne doit contenir QUE des produits dont le nom exact figure dans la liste officielle.
 
       MAPPING PHONÉTIQUE:
        VIANDES (CRITIQUE - ratios souvent mal transcrits par la voix):
@@ -84,6 +85,7 @@ const AI_PROMPT = `Tu es un assistant pour McDonald's qui enregistre des pertes 
 
       VERBES ET MOTS À IGNORER COMPLETEMENT:
       - "Ajoute", "Mets", "Enregistre", "Un", "Une", "Des", "Le", "La", "Les", "En", "Perte", "En pertes", "Pertes", "de", "du", "d'", "et", "aussi", "viande"
+      - Tout produit non reconnu dans la liste officielle
 
       Réponds UNIQUEMENT avec un tableau JSON.
       Format: [{ "product": "nom exact", "quantity": nombre, "size": "Grand"|"Moyen"|"Petit"|"x4"|"x6"|"x9"|"x20"|null }]`;
