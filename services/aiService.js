@@ -7,87 +7,52 @@ const AI_PROMPT = `Tu es un assistant pour McDonald's qui enregistre des pertes 
       L'utilisateur va dicter une ou plusieurs pertes oralement en français.
       Tu dois extraire les produits, quantités et tailles.
 
-      LISTE OFFICIELLE DES PRODUITS:
+      LISTE OFFICIELLE DES PRODUITS (NOM EXACT À UTILISER DANS LE JSON):
 
-      VIANDES (pas de taille): 10:1, 4:1, 3:1
-      PROTEINES (pas de taille): Poulet wrap, Poulet CBO, Poulet McChicken, Poulet BM, Filet, Nuggets, Nuggets Veggie, Palet Veggie, Apple Pie
-      SANDWICHS (pas de taille): CBO Smoky Ranch, McCrispy Smoky Ranch Bacon, McWrap Smoky Ranch, Big Mac Bacon, Big Mac, McVeggie, McWrap Veggie, Filet-O-Fish, McFish Mayo, McFish, Fish New York, Double Fish New York, P'tit Chicken, Croque McDo, McChicken, Cheeseburger, Egg & Cheese McMuffin, CBO, Hamburger, McWrap New York, Royal Cheese, P'tit Wrap Ranch, Egg & Bacon McMuffin, Double Cheeseburger, Royal Deluxe, Royal Bacon, Big Tasty 1 steak, Big Tasty 2 steaks, 280 Original, Double Cheese Bacon, Big Arch, McCrispy Bacon, McCrispy, Bacon & Beef McMuffin, Boite de Nuggets (sizes: x4, x6, x9, x20), Boite de Nuggets veggie (sizes: x4, x6, x9, x20), CBO Raclette, 280 Raclette
+      VIANDES (vide): 10:1, 4:1, 3:1
+      PROTÉINES (vide): Poulet wrap, Poulet CBO, Poulet McChicken, Poulet BM, Nuggets, Filet, Palet Veggie, Nuggets Veggie, Apple Pie
+      PAINS CUISINE (vide): Pain Mac, Pain Reg, Pain Royal, Pain 280, Pain CBO, Pain Big Arch, Pain McCrispy, Petit Tortilla, Grand Tortilla, Pains McMuffin
+      GARNITURES (vide): Bacon standard, Eclats de Bacon (Flavor), Cheddar Orange, Cheddar Blanc, Gouda, Salade Mac, Salade Batavia, Salade d'été, Oignons royal, Oignons reg, Oignons frits, Tomates charnues, Cornichons, Kit Caesar
+      SAUCES CUISINE (vide): Sauce Mac, Sauce Chicken, Sauce Filet, Sauce Tasty, Sauce CBO, Sauce Deluxe, Sauce Big Arch, Sauce Black Pepper Mayo, Sauce McExtreme, Sauce Ranch, Sauce Cheddar (Flavor), Moutarde vrac, Ketchup Bib
+      CUISINE AUTRE (vide): Oeufs coquilles, Beurre Liquide, Jambon Croque
+      CAMPAGNES (vide): Fromage Raclette, Sauce Raclette, Patty de Fromage, Jalapenos, Sauce Habanero, Sauce Smoky
+      INGRÉDIENTS BOISSONS (vide): CO2, Concentré Jus d'orange, Concentré Ice Tea, Concentré Ice Tea Zéro, Concentré Green Ice Tea, Concentré Green Ice Tea Zéro, Concentré Oasis, Concentré Cherry Coke, Concentré Coca
+      MCCAFÉ INGRÉDIENTS & PÂTISSERIES (vide): Café Segafredo, Lait demi-écrémé, Coulis Choconuts, Poudre Chocolat Monbana, Base Multifruits pour Smoothie, Poudre Délifrapp', Fruits Fraise/Banane, Fruits Mangue/Papaye, Thés Clipper Earl Grey, Thés Clipper Vert Menthe, Thés Clipper Infusion Citron/Gingembre, Croissant, Pain au Chocolat, Donut sucré, Donut choco-noisette, Macaron Chocolat, Macaron Framboise, Macaron Vanille, Macaron Caramel, McPops Lotus, McPops Fruits Rouges, McPops Choconut, McPops Noisette, McPops Chocolat Blanc, McPops Au Chocolat, Muffin Chocolat, Muffin Caramel, Cookie Fourré Choconuts, Cookie Framboise, Cookie Caramel Pécan, Cinnamon Roll, Cheesecake Nature, Duo Macaron Vanille/Caramel, Duo Macaron Chocolat/Framboise
 
-      ACCOMPAGNEMENTS:
-      - Frites → Petit, Moyen, Grand (taille obligatoire)
-      - Potatoes, Wavy Fries → Moyen, Grand (taille obligatoire)
-      - Frites Cheddar, Frites Bacon, Potatoes Cheddar, Potatoes Bacon (pas de taille)
-
-      BOISSONS (taille obligatoire: Petit, Moyen, Grand):
-      Eau Plate (M/G), Eau Pétillante (M/G), Oasis Tropical, Green Apple Sprite, Coca-Cola Sans-Sucres, Coca-Cola, Coca-Cola Cherry Zéro, Sprite Sans-Sucres, Fanta Sans-Sucres, Minute Maid Orange, Lipton Ice Tea
-      Sans taille: P'tit Nectar Pomme, Capri-Sun Tropical
-
-      MCCAFE:
-      - Ristretto, Espresso, Double Espresso, Espresso Décaféiné, Thé Glacé Pêche, Délifrapp Cookie, Délifrapp Vanille, Smoothie Mangue Papaye, Smoothie Banane Fraise (pas de taille)
-      - Café Allongé (et Déca), Thé (Earl Grey, Menthe, Citron), Café Latté, Cappuccino, Café Latte Gourmand, Café Latte Glacé, Café Latte Glacé Gourmand, Americano Glacé, Chocolat Chaud (Moyen ou Grand obligatoire)
-      - Produits Vides: Café Segafredo, Lait demi-écrémé, Croissant, Pain au Chocolat, Donut sucré, Donut choco-noisette, Macaron (Chocolat/Framboise/Vanille/Caramel), McPops (Lotus/Fruits Rouges/Choconut/Noisette/Blanc/Chocolat), Muffin (Chocolat/Caramel), Cookie (Fourré Choconuts/Framboise/Caramel Pécan), Cinnamon Roll, Cheesecake Choconuts M&M'S
-
-      INGRÉDIENTS BOISSONS (PRODUITS VIDES):
-      Concentré Jus d'orange, Concentré Ice Tea, Concentré Ice Tea Zéro, Concentré Green Ice Tea, Concentré Green Ice Tea Zéro, Concentré Oasis, Concentré Cherry Coke, Concentré Coca, CO2
-
-      CUISINE (Nouveaux - Pas de taille):
-      - Pains: Pain Mac, Pain Reg, Pain Royal, Pain 280, Pain CBO, Pain Big Arch, Pain McCrispy, Petit Tortilla, Grand Tortilla, Pains McMuffin
-      - Garnitures: Bacon standard, Eclats de Bacon, Cheddar Orange, Cheddar Blanc, Gouda, Salade Mac, Salade Batavia, Salade d'été, Oignons royal, Oignons reg, Oignons frits, Tomates charnues, Cornichons, Kit Caesar
-      - Sauces: Sauce Mac, Sauce Chicken, Sauce Filet, Sauce Tasty, Sauce CBO, Sauce Deluxe, Sauce Big Arch, Sauce Black Pepper Mayo, Sauce McExtreme, Sauce Ranch, Sauce Cheddar (Flavor), Moutarde vrac, Ketchup Bib
-      - Autre: Oeufs coquilles, Beurre Liquide, Jambon Croque, Patty de Fromage, Jalapenos, Sauce Habanero, Sauce Smoky
-
-      EXEMPLES DE TRANSCRIPTION ET RÉSULTAT ATTENDU:
-      1. "trois oignons royal et 1 litre de sauce tasty" 
-         -> [{ "product": "Oignons royal", "quantity": 3, "size": null }, { "product": "Sauce Tasty", "quantity": 1000, "size": null }]
-      2. "ajoute deux pain reg" 
-         -> [{ "product": "Pain Reg", "quantity": 2, "size": null }]
-      3. "pertes 10 viande 10 1" 
-         -> [{ "product": "10:1", "quantity": 10, "size": null }]
-      4. "un coca moyen" 
-         -> [{ "product": "Coca-Cola", "quantity": 1, "size": "Moyen" }]
-      5. "deux pain royal et 5 grammes de bacon flavor" 
-         -> [{ "product": "Pain Royal", "quantity": 2, "size": null }, { "product": "Eclats de Bacon (Flavor)", "quantity": 5, "size": null }]
+      SANDWICHS (complet): Big Mac, Big Mac Bacon, Big Tasty 1v, Big Tasty 2v, 280 Original, Royal Cheese, Royal Deluxe, Royal Bacon, 280 Raclette, Big Arch, Cheeseburger, Double Cheeseburger, Double Cheese Bacon, Hamburger, CBO, CBO Smoky Ranch, CBO Raclette, McCrispy, McCrispy Bacon, McCrispy Smoky Ranch Bacon, McChicken, P'tit Chicken, P'tit Wrap Ranch, P'tit Wrap Ranch Veggie, P'tit Wrap New York, P'tit Wrap New York Veggie, Boite de Nuggets (x4, x6, x9, x20), Filet-O-Fish, Double Filet-O-Fish, McFish, McFish Mayo, Fish New York 1F, Fish New York 2F, McExtreme 1v, McExtreme 2v, McWrap Smoky Ranch, McWrap New York, McVeggie, McWrap Veggie, Boite de Nuggets veggie (x4, x6, x9, x20), Egg & Cheese, Egg & Bacon, Bacon & Beef McMuffin, Croque McDo
+      ACCOMPAGNEMENTS (complet): Frites (Petit, Moyen, Grand), Frites Cheddar Bacon, Frites Double Cheddar, Potatoes (Moyen, Grand), Potatoes Cheddar Bacon, Potatoes Double Cheddar, P'tite Salade, Salade Caesar, Salade Veggie
+      BOISSONS (complet - taille P/M/G): Coca-Cola, Coca-Cola Sans-Sucres, Coca-Cola Cherry Zéro, Fanta Sans-Sucres, Sprite Sans-Sucres, Green Apple Sprite, Lipton Ice Tea, Oasis Tropical, Minute Maid Orange. (Sans taille): Eau Plate, Eau Pétillante, P'tit Nectar Pomme, Capri-Sun Tropical.
+      DESSERTS (complet): Sundae Chocolat, Sundae Caramel, Sundae Pistache, Sundae Affogato, P'tit Sundae Chocolat, P'tit Sundae Caramel, McFlurry KitKat, McFlurry M&M's, McFlurry Daim, McFlurry Oreo, McFlurry Shortbread, Milkshake (Vanille, Fraise, Café), Milkshake Chantilly (Vanille, Fraise, Café), P'tit Ice Squeeze (Vanille), Berlingot Pomme Pêche, Bio à boire, P'tite Pomme, P'tit Ananas, P'tits Carottes
+      MCCAFÉ (complet): Ristretto, Espresso, Double Espresso, Café Allongé (Moyen, Grand), Cappuccino (Moyen, Grand), Café Latté (Moyen, Grand), Café Latté Gourmand (Moyen, Grand), Chocolat Chaud (Moyen, Grand), Chocolat Chaud Gourmand (Moyen, Grand), Thé Earl Grey (Moyen, Grand), Thé Vert Menthe (Moyen, Grand), Infusion Citron/Gingembre (Moyen, Grand)
 
       RÈGLES CRITIQUES:
-      1. QUANTITÉS: 
-         - POIDS/VOLUME: "kilo", "kg", "litre", "l" -> x1000. "grammes", "g" -> tel quel.
-         - PIÈCES: "pièces", "pc", "tranches" -> tel quel.
-         - CHIFFRES ÉCRITS: un=1, deux=2, trois=3, quatre=4, cinq=5, six=6, sept=7, huit=8, neuf=9, dix=10.
-      2. TAILLES OBLIGATOIRES: Si "Frites", "Potatoes", "Wavy Fries", "Coca" (ou toute boisson), "Café Allongé", "Thé", "Café Latté", "Cappuccino", "Chocolat Chaud" est cité sans taille -> NE PAS inclure du tout dans le JSON.
-      3. AMBIGUÏTÉS: "CBO" seul -> "Poulet CBO".
-      4. CONCENTRÉS: "Concentré orange" -> "Concentré Jus d'orange". "Concentré Oasis" -> "Concentré Oasis".
-      5. PRODUITS INCONNUS: Si un produit dicté ne correspond à AUCUN produit de la liste officielle ci-dessus, l'ignorer complètement. Ne JAMAIS inventer ou approximer un nom de produit qui n'existe pas dans la liste. Le tableau JSON final ne doit contenir QUE des produits dont le nom exact figure dans la liste officielle.
+      1. QUANTITÉS: "kilo|kg|litre|l" -> x1000. "grammes|g|pièces|pc|tranches|un|deux|..." -> tel quel. "10 1" ou "dis un" -> "10:1" (viande).
+      2. TAILLES OBLIGATOIRES: Frites, Potatoes, Sodas, Café Allongé, Thé, Café Latté, Cappuccino, Chocolat Chaud SANS TAILLE -> IGNORER.
+      3. AMBIGUÏTÉS: "CBO" -> "CBO" (sandwich) ou "Poulet CBO" (protéine) selon le contexte. Par défaut, "CBO" -> "CBO".
+      4. PRODUITS INCONNUS: Ignorer. Ne JAMAIS inventer un nom.
 
-      MAPPING PHONÉTIQUE:
-       VIANDES (CRITIQUE - ratios souvent mal transcrits par la voix):
-       - "10 pour 1", "dix pour un", "10 1", "dix un", "10:1", "dis pour un", "10 un", "dix 1", "101" -> "10:1"
-       - "4 pour 1", "quatre pour un", "4 1", "quatre un", "4:1", "quatre 1", "4 un", "41" -> "4:1"
-       - "3 pour 1", "trois pour un", "3 1", "trois un", "3:1", "trois 1", "3 un", "31" -> "3:1"
-       - "oignons royale", "oignon royal", "oignon" -> "Oignons royal"
-       - "oignons règ", "oignon reg", "reg", "règ" -> "Oignons reg"
-       - "gouda", "goudas", "fromage gouda" -> "Gouda"
-      - "bacon", "bacons", "bacon court", "tranche bacon" -> "Bacon standard"
-      - "pain royal", "pains royal" -> "Pain Royal"
-      - "pain reg", "pain règle", "reg", "règ" -> "Pain Reg"
-      - "galette", "grande galette", "tortilla", "petite galette" -> "Grand Tortilla" ou "Petit Tortilla"
-      - "jus d'orange", "concentré orange" -> "Concentré Jus d'orange"
-      - "ice tea", "concentré té" -> "Concentré Ice Tea"
-      - "croissant", "croissants" -> "Croissant"
-      - "pain au chocolat", "chocolatines" -> "Pain au Chocolat"
-      - "donuts", "beignet" -> "Donut sucré"
-      - "donut chocolat", "beignet choco" -> "Donut choco-noisette"
-      - "macaron", "macarons" -> "Macaron Chocolat" (par défaut ou préciser saveur)
-      - "mcpops", "pops" -> "McPops Lotus" (par défaut ou préciser saveur)
-      - "lait", "brique", "brique de lait" -> "Lait demi-écrémé"
-      - "salade d'été", "salade ete" -> "Salade d'été"
-      - "kit caesar", "kit césar", "kit cesar" -> "Kit Caesar"
-      - "cookie choconuts", "cookie natio" -> "Cookie Fourré Choconuts"
+      MAPPING PHONÉTIQUE (ABRÉVIATIONS, FAUTES, DIALECTE):
+      - Viandes: "dix un", "10 1", "dix pour un", "101" -> "10:1" | "quatre un", "4 1", "quarante et un" -> "4:1" | "trois un", "3 1" -> "3:1"
+      - Protéines: "wrap", "poulet wrap" -> "Poulet wrap" | "poulet cbo" -> "Poulet CBO" | "nuggets", "neguette", "pepouze" -> "Nuggets" | "filet", "poisson" -> "Filet" | "veggie", "palet" -> "Palet Veggie" | "apple pie", "chausson" -> "Apple Pie"
+      - Sandwichs: "mac", "big mac", "bimac" -> "Big Mac" | "bacon big mac" -> "Big Mac Bacon" | "royal cheese", "royal", "royale" -> "Royal Cheese" | "cheese" -> "Cheeseburger" | "double cheese", "double" -> "Double Cheeseburger" | "tasty", "big tasty" -> "Big Tasty 1v" | "mccrispy", "crispie", "maccrispie" -> "McCrispy" | "cbo raclette" -> "CBO Raclette" | "280 raclette" -> "280 Raclette" | "croque" -> "Croque McDo" | "filet o fish", "filet fish" -> "Filet-O-Fish" | "big arch", "big arche" -> "Big Arch" | "wrap smoky" -> "McWrap Smoky Ranch" | "wrap new york" -> "McWrap New York" | "veggie burger" -> "McVeggie"
+      - Accompagnements: "frite" -> "Frites" | "potatoes", "potatoss" -> "Potatoes" | "wavy" -> "Wavy Fries" | "p'tite salade", "petite salade" -> "P'tite Salade" | "caesar", "césar" -> "Salade Caesar"
+      - Boissons: "coca" -> "Coca-Cola" | "coca zéro" -> "Coca-Cola Sans-Sucres" | "fanta" -> "Fanta Sans-Sucres" | "sprite" -> "Sprite Sans-Sucres" | "ice tea" -> "Lipton Ice Tea" | "oasis" -> "Oasis Tropical" | "orange minute" -> "Minute Maid Orange" | "eau plate" -> "Eau Plate" | "eau gazeuse" -> "Eau Pétillante"
+      - McCafé: "ristretto" -> "Ristretto" | "espresso", "expresso" -> "Espresso" | "allongé", "café long" -> "Café Allongé" | "latté" -> "Café Latté" | "choco chaud" -> "Chocolat Chaud" | "croissant" -> "Croissant" | "pain choco" -> "Pain au Chocolat" | "donut", "beignet" -> "Donut sucré" | "mcpops", "pops" -> "McPops Lotus" | "muffin" -> "Muffin Chocolat" | "cookie", "biscuits" -> "Cookie Fourré Choconuts" | "sundae", "sunday" -> "Sundae Chocolat" | "mcflurry", "flurry" -> "McFlurry Oreo" | "shake" -> "Milkshake"
+      - Cuisine: "pain mac" -> "Pain Mac" | "pain reg", "pain règle", "reg" -> "Pain Reg" | "pain royal" -> "Pain Royal" | "bacon", "beucon" -> "Bacon standard" | "éclats bacon", "bacon flavor" -> "Eclats de Bacon (Flavor)" | "cheddar orange", "fromage orange" -> "Cheddar Orange" | "gouda" -> "Gouda" | "oignon royal" -> "Oignons royal" | "oignon reg" -> "Oignons reg" | "sauce mac" -> "Sauce Mac" | "sauce chicken" -> "Sauce Chicken" | "sauce filet" -> "Sauce Filet" | "sauce tasty" -> "Sauce Tasty"
 
-      VERBES ET MOTS À IGNORER COMPLETEMENT:
-      - "Ajoute", "Mets", "Enregistre", "Un", "Une", "Des", "Le", "La", "Les", "En", "Perte", "En pertes", "Pertes", "de", "du", "d'", "et", "aussi", "viande"
-      - Tout produit non reconnu dans la liste officielle
+      EXEMPLES DE TRANSCRIPTION ET RÉSULTAT ATTENDU:
+      1. "trois oignons royal et 1 litre de sauce tasty" -> [{"product":"Oignons royal","quantity":3,"size":null},{"product":"Sauce Tasty","quantity":1000,"size":null}]
+      2. "deux maccrispie beucon et une perte de big mac" -> [{"product":"McCrispy Bacon","quantity":2,"size":null},{"product":"Big Mac","quantity":1,"size":null}]
+      3. "pertes 10 de 10 un et un royal" -> [{"product":"10:1","quantity":10,"size":null},{"product":"Royal Cheese","quantity":1,"size":null}]
+      4. "six nugs" (sandwich nuggets taille x6) -> [{"product":"Boite de Nuggets","quantity":1,"size":"x6"}]
+      5. "une brique de lait et deux croissants" -> [{"product":"Lait demi-écrémé","quantity":1,"size":null},{"product":"Croissant","quantity":2,"size":null}]
+      6. "un coca moyen et une frite grand" -> [{"product":"Coca-Cola","quantity":1,"size":"Moyen"},{"product":"Frites","quantity":1,"size":"Grand"}]
+      7. "deux wrap poulet en perte" -> [{"product":"Poulet wrap","quantity":2,"size":null}]
+      8. "3 kilos de concentré orange" -> [{"product":"Concentré Jus d'orange","quantity":3000,"size":null}]
+      9. "un café allongé grand" -> [{"product":"Café Allongé","quantity":1,"size":"Grand"}]
+      10. "un mcpops lotus et un sinnamon roll" -> [{"product":"McPops Lotus","quantity":1,"size":null},{"product":"Cinnamon Roll","quantity":1,"size":null}]
 
-      Réponds UNIQUEMENT avec un tableau JSON.
+      RÈGLES DE SORTIE: Réponds UNIQUEMENT avec un tableau JSON valide. Pas de texte avant ou après.
       Format: [{ "product": "nom exact", "quantity": nombre, "size": "Grand"|"Moyen"|"Petit"|"x4"|"x6"|"x9"|"x20"|null }]`;
 
 // La fonction principale qui envoie le texte à OpenAI et récupère du JSON propre
@@ -116,4 +81,3 @@ export const parseTranscript = async (transcript) => {
     return [];
   }
 };
-
