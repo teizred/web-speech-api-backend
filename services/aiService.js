@@ -11,7 +11,7 @@ const AI_PROMPT = `Tu es un assistant pour McDonald's qui enregistre des pertes 
 
       VIANDES (pas de taille): 10:1, 4:1, 3:1
       PROTEINES (pas de taille): Poulet wrap, Poulet CBO, Poulet McChicken, Poulet BM, Filet, Nuggets, Nuggets Veggie, Palet Veggie, Apple Pie
-      SANDWICHS (pas de taille): CBO Smoky Ranch, McCrispy Smoky Ranch Bacon, McWrap Smoky Ranch, Big Mac Bacon, Big Mac, McVeggie, McWrap Veggie, Filet-O-Fish, McFish Mayo, McFish, Fish New York, Double Fish New York, P'tit Chicken, Croque McDo, McChicken, Cheeseburger, Egg & Cheese McMuffin, CBO, Hamburger, McWrap New York, Royal Cheese, P'tit Wrap Ranch, Egg & Bacon McMuffin, Double Cheeseburger, Royal Deluxe, Royal Bacon, Big Tasty 1 steak, Big Tasty 2 steaks, 280 Original, Double Cheese Bacon, Big Arch, McCrispy Bacon, McCrispy, Bacon & Beef McMuffin, Boite de Nuggets (sizes: x4, x6, x9, x20), Boite de Nuggets veggie (sizes: x4, x6, x9, x20)
+      SANDWICHS (pas de taille): CBO Smoky Ranch, McCrispy Smoky Ranch Bacon, McWrap Smoky Ranch, Big Mac Bacon, Big Mac, McVeggie, McWrap Veggie, Filet-O-Fish, McFish Mayo, McFish, Fish New York, Double Fish New York, P'tit Chicken, Croque McDo, McChicken, Cheeseburger, Egg & Cheese McMuffin, CBO, Hamburger, McWrap New York, Royal Cheese, P'tit Wrap Ranch, Egg & Bacon McMuffin, Double Cheeseburger, Royal Deluxe, Royal Bacon, Big Tasty 1 steak, Big Tasty 2 steaks, 280 Original, Double Cheese Bacon, Big Arch, McCrispy Bacon, McCrispy, Bacon & Beef McMuffin, Boite de Nuggets (sizes: x4, x6, x9, x20), Boite de Nuggets veggie (sizes: x4, x6, x9, x20), CBO Raclette, 280 Raclette
 
       ACCOMPAGNEMENTS:
       - Frites → Petit, Moyen, Grand (taille obligatoire)
@@ -53,7 +53,7 @@ const AI_PROMPT = `Tu es un assistant pour McDonald's qui enregistre des pertes 
          - POIDS/VOLUME: "kilo", "kg", "litre", "l" -> x1000. "grammes", "g" -> tel quel.
          - PIÈCES: "pièces", "pc", "tranches" -> tel quel.
          - CHIFFRES ÉCRITS: un=1, deux=2, trois=3, quatre=4, cinq=5, six=6, sept=7, huit=8, neuf=9, dix=10.
-      2. TAILLES OBLIGATOIRES: Si "Frites" ou "Coca" sans taille -> NE PAS inclure.
+      2. TAILLES OBLIGATOIRES: Si "Frites", "Potatoes", "Wavy Fries", "Coca" (ou toute boisson), "Café Allongé", "Thé", "Café Latté", "Cappuccino", "Chocolat Chaud" est cité sans taille -> NE PAS inclure du tout dans le JSON.
       3. AMBIGUÏTÉS: "CBO" seul -> "Poulet CBO".
       4. CONCENTRÉS: "Concentré orange" -> "Concentré Jus d'orange". "Concentré Oasis" -> "Concentré Oasis".
       5. PRODUITS INCONNUS: Si un produit dicté ne correspond à AUCUN produit de la liste officielle ci-dessus, l'ignorer complètement. Ne JAMAIS inventer ou approximer un nom de produit qui n'existe pas dans la liste. Le tableau JSON final ne doit contenir QUE des produits dont le nom exact figure dans la liste officielle.
