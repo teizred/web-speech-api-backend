@@ -37,16 +37,28 @@ RÈGLES CRITIQUES:
 2. TAILLES OBLIGATOIRES: Si Frites/Potatoes/Wavy/boisson/café long/thé/cappuccino/chocolat chaud sans taille → NE PAS inclure
 3. PRODUITS INCONNUS: Ignorer complètement tout produit absent de la liste
 4. BOITE NUGGETS: "boite 6", "box 6", "nuggets box" → Boite de Nuggets, size: "x6"
+5. PATTERN NUMÉRIQUE VIANDES:
+   - Nombre se terminant par "41" (ex: 241, 141, 341) → quantity = chiffres avant "41", product = "4:1"
+   - Nombre se terminant par "101" (ex: 2101, 5101) → quantity = chiffres avant "101", product = "10:1"
+   - Nombre se terminant par "31" (ex: 231, 531) → quantity = chiffres avant "31", product = "3:1"
+   - EXCEPTION: "31", "41", "101" seuls → quantity: 1, product: "3:1"/"4:1"/"10:1"
 
 MAPPING PHONÉTIQUE (CRITIQUE):
-- "dix un", "dix pour un", "10 1", "101", "dis un" → "10:1"
-- "quatre un", "4 pour 1", "41", "quatre pour un" → "4:1"
+- "dix un", "dix pour un", "10 1", "101", "dis un", "10 ans", "10 100" → "10:1"
+- "quatre un", "4 pour 1", "41", "quatre pour un", "quatre ans", "quatrain" → "4:1"
 - "trois un", "3 pour 1", "31", "trois pour un" → "3:1"
+- "241", "24 1", "24 un", "24 une", "24 ans" → quantity: 2, product: "4:1"
+- "141", "14 1", "14 un" → quantity: 1, product: "4:1"
+- "341", "34 1", "34 un" → quantity: 3, product: "4:1"
+- "5101", "51 01", "51 un" → quantity: 5, product: "10:1"
+- "2101", "21 01", "21 un" → quantity: 2, product: "10:1"
+- "531", "53 1", "53 un" → quantity: 5, product: "3:1"
 - "mac", "big mac" → "Big Mac"
 - "royal", "royal cheese" → "Royal Cheese"
 - "cheese" seul → "Cheeseburger"
 - "cbo" seul → "Poulet CBO"
 - "nugs", "nuggets" seul → "Nuggets"
+- "bag", "baggy" → "Boite de Nuggets"
 - "salade mac", "salade maque" → "Salade Mac"
 - "oignon frit", "oignons frit", "oignon frits" → "Oignons frits"
 - "oignons royale", "oignon royal" → "Oignons royal"
@@ -68,12 +80,14 @@ MAPPING PHONÉTIQUE (CRITIQUE):
 - "wavy", "wavi", "ouavy" → "Wavy Fries"
 - "pota", "potato" → "Potatoes"
 - "smoky", "smouki" → garder dans le nom du produit
-- "crispy", "crispie" → garder dans le nom du produit
 
 MOTS À IGNORER: "ajoute", "mets", "enregistre", "perte", "pertes", "en perte", "perte de", "une perte de", "en pertes", "de", "du", "et", "aussi", "viande"
 
 EXEMPLES:
 "dix viande dix un" → [{"product":"10:1","quantity":10,"size":null}]
+"241" → [{"product":"4:1","quantity":2,"size":null}]
+"5101" → [{"product":"10:1","quantity":5,"size":null}]
+"24 ans en perte" → [{"product":"4:1","quantity":2,"size":null}]
 "1 kg salade mac en perte" → [{"product":"Salade Mac","quantity":1000,"size":null}]
 "300g oignons frits" → [{"product":"Oignons frits","quantity":300,"size":null}]
 "deux coca moyen et 5 pain royal" → [{"product":"Coca-Cola","quantity":2,"size":"Moyen"},{"product":"Pain Royal","quantity":5,"size":null}]
@@ -81,7 +95,6 @@ EXEMPLES:
 "3 litre sauce tasty" → [{"product":"Sauce Tasty","quantity":3000,"size":null}]`;
 
 export const parseTranscript = async (transcript) => {
-  // Garde-fou : transcript trop court (moins de 2 mots)
   if (!transcript || transcript.trim().split(/\s+/).length < 2) {
     console.log("Transcript trop court, bypass API.");
     return [];
