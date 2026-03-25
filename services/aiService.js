@@ -8,9 +8,9 @@ PRODUITS OFFICIELS:
 
 VIANDES (size:null): 10:1, 4:1, 3:1
 
-PROTÉINES (size:null): Poulet wrap, Poulet CBO, Poulet McChicken, Poulet BM, Filet, Nuggets, Nuggets Veggie, Palet Veggie, Apple Pie
+PROTÉINES (size:null): Poulet wrap, Etoiles, Poulet CBO, Poulet McChicken, Poulet BM, Filet, Nuggets, Nuggets Veggie, Palet Veggie, Apple Pie
 
-SANDWICHS (size:null): Big Mac, Big Mac Bacon, Royal Cheese, Royal Deluxe, Royal Bacon, Big Tasty 1 steak, Big Tasty 2 steaks, 280 Original, 280 Raclette, Big Arch, Double Cheese Bacon, Hamburger, Cheeseburger, Double Cheeseburger, McChicken, McCrispy, McCrispy Bacon, McCrispy Smoky Ranch Bacon, CBO, CBO Smoky Ranch, CBO Raclette, McVeggie, Filet-O-Fish, McFish, McFish Mayo, Fish New York, Double Fish New York, Croque McDo, Egg & Cheese McMuffin, Egg & Bacon McMuffin, Bacon & Beef McMuffin, P'tit Chicken, P'tit Wrap Ranch, McWrap New York, McWrap Smoky Ranch, McWrap Veggie, Boite de Nuggets, Boite de Nuggets Veggie
+SANDWICHS (size:null): Big Mac, Big Mac Bacon, Royal Cheese, Royal Deluxe, Royal Bacon, Big Tasty 1 steak, Big Tasty 2 steaks, 280 Original, 280 Raclette, Big Arch, Double Cheese Bacon, Hamburger, Cheeseburger, Double Cheeseburger, McChicken, McCrispy, McCrispy Bacon, McCrispy Smoky Ranch Bacon, CBO, CBO Smoky Ranch, CBO Raclette, McVeggie, Filet-O-Fish, McFish, McFish Mayo, Fish New York, Double Fish New York, Croque McDo, Egg & Cheese McMuffin, Egg & Bacon McMuffin, Bacon & Beef McMuffin, P'tit Chicken, P'tit Wrap Ranch, P'tit Wrap Deluxe, P'tit Wrap Deluxe Veggie, McWrap New York, McWrap Smoky Ranch, McWrap Veggie, Boite de Nuggets, Boite de Nuggets Veggie
 
 ACCOMPAGNEMENTS:
 - Frites (taille P/M/G obligatoire), Potatoes (M/G obligatoire), Wavy Fries (M/G obligatoire)
@@ -18,6 +18,8 @@ ACCOMPAGNEMENTS:
 
 BOISSONS (taille P/M/G obligatoire): Coca-Cola, Coca-Cola Sans-Sucres, Coca-Cola Cherry Zéro, Fanta Sans-Sucres, Sprite Sans-Sucres, Oasis Tropical, Green Apple Sprite, Minute Maid Orange, Lipton Ice Tea
 Sans taille: Eau Plate, Eau Pétillante, P'tit Nectar Pomme, Capri-Sun Tropical
+
+DESSERTS (size:null): Sundae Chocolat, Sundae Caramel, Sundae Pistache, Sundae Affogato, P'tit Sundae Chocolat, P'tit Sundae Caramel, McFlurry KitKat, McFlurry M&M's, McFlurry Daim, McFlurry Oreo, McFlurry Shortbread, McFlurry Infinity, McFlurry, Milkshake, Milkshake Chantilly, P'tit Ice Squeeze (Vanille), Berlingot Pomme Pêche, Bio à boire, P'tite Pomme, P'tit Ananas, P'tits Carottes
 
 MCCAFÉ:
 - Taille M/G obligatoire: Café Allongé, Café Allongé Décaféiné, Thé Earl Grey, Thé Menthe, Thé Citron, Café Latté, Café Latte Gourmand, Café Latte Glacé, Café Latte Glacé Gourmand, Cappuccino, Chocolat Chaud, Chocolat Chaud Gourmand, Americano Glacé

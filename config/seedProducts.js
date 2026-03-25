@@ -17,6 +17,7 @@ const PRODUCTS = [
 
   // Protéines
   { name: "Poulet wrap", category: "Protéines", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "vide" },
+  { name: "Etoiles", category: "Protéines", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Poulet CBO", category: "Protéines", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Poulet McChicken", category: "Protéines", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Poulet BM", category: "Protéines", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "vide" },
@@ -156,6 +157,8 @@ const PRODUCTS = [
   { name: "P'tit Wrap Ranch Veggie", category: "Sandwichs", subcategory: "Veggie", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "P'tit Wrap New York", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "P'tit Wrap New York Veggie", category: "Sandwichs", subcategory: "Veggie", sizes: null, unit_type: "pieces", loss_type: "complet" },
+  { name: "P'tit Wrap Deluxe", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "complet" },
+  { name: "P'tit Wrap Deluxe Veggie", category: "Sandwichs", subcategory: "Veggie", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "Boite de Nuggets", category: "Sandwichs", subcategory: "Poulet", sizes: ["x4", "x6", "x9", "x20"], unit_type: "pieces", loss_type: "complet" },
   { name: "Filet-O-Fish", category: "Sandwichs", subcategory: "Poisson", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "Double Filet-O-Fish", category: "Sandwichs", subcategory: "Poisson", sizes: null, unit_type: "pieces", loss_type: "complet" },
@@ -213,6 +216,8 @@ const PRODUCTS = [
   { name: "McFlurry Daim", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "McFlurry Oreo", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "McFlurry Shortbread", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "pieces", loss_type: "complet" },
+  { name: "McFlurry Infinity", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "pieces", loss_type: "complet" },
+  { name: "McFlurry", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "Milkshake", category: "Desserts", subcategory: "Milshake", sizes: ["Vanille", "Fraise", "Café"], unit_type: "pieces", loss_type: "complet" },
   { name: "Milkshake Chantilly", category: "Desserts", subcategory: "Milshake", sizes: ["Vanille", "Fraise", "Café"], unit_type: "pieces", loss_type: "complet" },
   { name: "P'tit Ice Squeeze (Vanille)", category: "Desserts", subcategory: "Glaces", sizes: null, unit_type: "pieces", loss_type: "complet" },
