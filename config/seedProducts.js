@@ -17,13 +17,12 @@ const PRODUCTS = [
 
   // Protéines
   { name: "Poulet wrap", category: "Protéines", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "vide" },
-  { name: "Etoiles", category: "Protéines", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Poulet CBO", category: "Protéines", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Poulet McChicken", category: "Protéines", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Poulet BM", category: "Protéines", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Nuggets", category: "Protéines", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "vide" },
+  { name: "Rosti", category: "Protéines", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Filet", category: "Protéines", subcategory: "Poisson", sizes: null, unit_type: "pieces", loss_type: "vide" },
-  { name: "Palet Veggie", category: "Protéines", subcategory: "Veggie", sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Nuggets Veggie", category: "Protéines", subcategory: "Veggie", sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Apple Pie", category: "Protéines", subcategory: "Desserts frits", sizes: null, unit_type: "pieces", loss_type: "vide" },
 
@@ -62,9 +61,8 @@ const PRODUCTS = [
   { name: "Sauce Tasty", category: "Sauces Cuisine", subcategory: "Cartouches", sizes: null, unit_type: "liquid", loss_type: "vide" },
   { name: "Sauce CBO", category: "Sauces Cuisine", subcategory: "Cartouches", sizes: null, unit_type: "liquid", loss_type: "vide" },
   { name: "Sauce Deluxe", category: "Sauces Cuisine", subcategory: "Cartouches", sizes: null, unit_type: "liquid", loss_type: "vide" },
-  { name: "Sauce Big Arch", category: "Sauces Cuisine", subcategory: "Cartouches", sizes: null, unit_type: "liquid", loss_type: "vide" },
-  { name: "Sauce Black Pepper Mayo", category: "Sauces Cuisine", subcategory: "Cartouches", sizes: null, unit_type: "liquid", loss_type: "vide" },
   { name: "Sauce McExtreme", category: "Sauces Cuisine", subcategory: "Cartouches", sizes: null, unit_type: "liquid", loss_type: "vide" },
+  { name: "Sauce Moutarde Miel", category: "Sauces Cuisine", subcategory: "Campagne", sizes: null, unit_type: "liquid", loss_type: "vide" },
   { name: "Sauce Ranch", category: "Sauces Cuisine", subcategory: "Poches", sizes: null, unit_type: "liquid", loss_type: "vide" },
   { name: "Sauce Cheddar (Flavor)", category: "Sauces Cuisine", subcategory: "Poches", sizes: null, unit_type: "liquid", loss_type: "vide" },
   { name: "Moutarde vrac", category: "Sauces Cuisine", subcategory: null, sizes: null, unit_type: "liquid", loss_type: "vide" },
@@ -78,10 +76,6 @@ const PRODUCTS = [
   // Campagnes
   { name: "Fromage Raclette", category: "Campagnes", subcategory: null, sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Sauce Raclette", category: "Campagnes", subcategory: null, sizes: null, unit_type: "liquid", loss_type: "vide" },
-  { name: "Patty de Fromage", category: "Campagnes", subcategory: null, sizes: null, unit_type: "pieces", loss_type: "vide" },
-  { name: "Jalapenos", category: "Campagnes", subcategory: null, sizes: null, unit_type: "weight", loss_type: "vide" },
-  { name: "Sauce Habanero", category: "Campagnes", subcategory: null, sizes: null, unit_type: "liquid", loss_type: "vide" },
-  { name: "Sauce Smoky", category: "Campagnes", subcategory: null, sizes: null, unit_type: "liquid", loss_type: "vide" },
 
   // Ingrédients Boissons (Nouveau)
   { name: "CO2", category: "Ingrédients Boissons", subcategory: null, sizes: null, unit_type: "weight", loss_type: "vide" },
@@ -125,7 +119,6 @@ const PRODUCTS = [
   { name: "Cookie Fourré Choconuts", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Cookie Framboise", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Cookie Caramel Pécan", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "pieces", loss_type: "vide" },
-  { name: "Cinnamon Roll", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "pieces", loss_type: "vide" },
   { name: "Cheesecake Nature", category: "McCafé", subcategory: "Pâtisseries", sizes: null, unit_type: "pieces", loss_type: "vide" },
 
   // --- PERTES COMPLÈTES (Produits finis) ---
@@ -144,10 +137,16 @@ const PRODUCTS = [
   { name: "Cheeseburger", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "Double Cheeseburger", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "Double Cheese Bacon", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "pieces", loss_type: "complet" },
+  { name: "Deal Poisson", category: "Sandwichs", subcategory: "Poisson", sizes: null, unit_type: "pieces", loss_type: "complet" },
+  { name: "Deal Boeuf", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "pieces", loss_type: "complet" },
+  { name: "Deal Poulet", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "complet" },
+  { name: "Big Tasty Rosti", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "pieces", loss_type: "complet" },
+  { name: "McExtreme Rosti", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "Hamburger", category: "Sandwichs", subcategory: "Bœuf", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "CBO", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "CBO Smoky Ranch", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "complet" },
-  {name: "CBO Raclette", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "complet" },
+  { name: "CBO Raclette", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "complet" },
+  { name: "CBO Rosti", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "McCrispy", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "McCrispy Bacon", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "McCrispy Smoky Ranch Bacon", category: "Sandwichs", subcategory: "Poulet", sizes: null, unit_type: "pieces", loss_type: "complet" },
@@ -201,6 +200,7 @@ const PRODUCTS = [
   { name: "Minute Maid Orange", category: "Boissons", subcategory: "Thés & Jus", sizes: ["Petit", "Moyen", "Grand"], unit_type: "pieces", loss_type: "complet" },
   { name: "P'tit Nectar Pomme", category: "Boissons", subcategory: "Thés & Jus", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "Capri-Sun Tropical", category: "Boissons", subcategory: "Thés & Jus", sizes: null, unit_type: "pieces", loss_type: "complet" },
+  { name: "Tropicana", category: "Boissons", subcategory: "Thés & Jus", sizes: null, unit_type: "pieces", loss_type: "complet" },
   { name: "Eau Plate", category: "Boissons", subcategory: "Eaux", sizes: ["Moyen", "Grand"], unit_type: "pieces", loss_type: "complet" },
   { name: "Eau Pétillante", category: "Boissons", subcategory: "Eaux", sizes: ["Moyen", "Grand"], unit_type: "pieces", loss_type: "complet" },
 

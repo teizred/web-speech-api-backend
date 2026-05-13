@@ -8,31 +8,31 @@ PRODUITS OFFICIELS:
 
 VIANDES (size:null): 10:1, 4:1, 3:1
 
-PROTÉINES (size:null): Poulet wrap, Etoiles, Poulet CBO, Poulet McChicken, Poulet BM, Filet, Nuggets, Nuggets Veggie, Palet Veggie, Apple Pie
+PROTÉINES (size:null): Poulet wrap, Poulet CBO, Poulet McChicken, Poulet BM, Filet, Nuggets, Nuggets Veggie, Apple Pie, Rosti
 
-SANDWICHS (size:null): Big Mac, Big Mac Bacon, Royal Cheese, Royal Deluxe, Royal Bacon, Big Tasty 1 steak, Big Tasty 2 steaks, 280 Original, 280 Raclette, Big Arch, Double Cheese Bacon, Hamburger, Cheeseburger, Double Cheeseburger, McChicken, McCrispy, McCrispy Bacon, McCrispy Smoky Ranch Bacon, CBO, CBO Smoky Ranch, CBO Raclette, McVeggie, Filet-O-Fish, McFish, McFish Mayo, Fish New York, Double Fish New York, Croque McDo, Egg & Cheese McMuffin, Egg & Bacon McMuffin, Bacon & Beef McMuffin, P'tit Chicken, P'tit Wrap Ranch, P'tit Wrap Deluxe, P'tit Wrap Deluxe Veggie, McWrap New York, McWrap Smoky Ranch, McWrap Veggie, Boite de Nuggets, Boite de Nuggets Veggie
+SANDWICHS (size:null): Big Mac, Big Mac Bacon, Royal Cheese, Royal Deluxe, Royal Bacon, Big Tasty 1 steak, Big Tasty 2 steaks, 280 Original, 280 Raclette, Big Arch, Double Cheese Bacon, Hamburger, Cheeseburger, Double Cheeseburger, McChicken, McCrispy, McCrispy Bacon, McCrispy Smoky Ranch Bacon, CBO, CBO Smoky Ranch, CBO Raclette, McVeggie, Filet-O-Fish, McFish, McFish Mayo, Fish New York, Double Fish New York, Croque McDo, Egg & Cheese McMuffin, Egg & Bacon McMuffin, Bacon & Beef McMuffin, P'tit Chicken, P'tit Wrap Ranch, P'tit Wrap Deluxe, P'tit Wrap Deluxe Veggie, McWrap New York, McWrap Smoky Ranch, McWrap Veggie, Boite de Nuggets, Boite de Nuggets Veggie, Deal Poisson, Deal Boeuf, Deal Poulet, CBO Rosti, Big Tasty Rosti, McExtreme Rosti
 
 ACCOMPAGNEMENTS:
 - Frites (taille P/M/G obligatoire), Potatoes (M/G obligatoire), Wavy Fries (M/G obligatoire)
 - Sans taille: Frites Cheddar, Frites Bacon, Potatoes Cheddar, Potatoes Bacon
 
 BOISSONS (taille P/M/G obligatoire): Coca-Cola, Coca-Cola Sans-Sucres, Coca-Cola Cherry Zéro, Fanta Sans-Sucres, Sprite Sans-Sucres, Oasis Tropical, Green Apple Sprite, Minute Maid Orange, Lipton Ice Tea
-Sans taille: Eau Plate, Eau Pétillante, P'tit Nectar Pomme, Capri-Sun Tropical
+Sans taille: Eau Plate, Eau Pétillante, P'tit Nectar Pomme, Capri-Sun Tropical, Tropicana
 
 DESSERTS (size:null): Sundae Chocolat, Sundae Caramel, Sundae Pistache, Sundae Affogato, P'tit Sundae Chocolat, P'tit Sundae Caramel, McFlurry KitKat, McFlurry M&M's, McFlurry Daim, McFlurry Oreo, McFlurry Shortbread, McFlurry Infinity, McFlurry, Milkshake, Milkshake Chantilly, P'tit Ice Squeeze (Vanille), Berlingot Pomme Pêche, Bio à boire, P'tite Pomme, P'tit Ananas, P'tits Carottes
 
 MCCAFÉ:
 - Taille M/G obligatoire: Café Allongé, Café Allongé Décaféiné, Thé Earl Grey, Thé Menthe, Thé Citron, Café Latté, Café Latte Gourmand, Café Latte Glacé, Café Latte Glacé Gourmand, Cappuccino, Chocolat Chaud, Chocolat Chaud Gourmand, Americano Glacé
 - Sans taille: Espresso, Double Espresso, Ristretto, Espresso Décaféiné, Thé Glacé Pêche, Délifrapp Cookie, Délifrapp Vanille, Smoothie Mangue Papaye, Smoothie Banane Fraise
-- Produits vides (size:null): Café Segafredo, Lait demi-écrémé, Croissant, Pain au Chocolat, Donut sucré, Donut choco-noisette, Macaron Chocolat, Macaron Framboise, Macaron Vanille, Macaron Caramel, McPops Lotus, McPops Fruits Rouges, McPops Choconut, Muffin Chocolat, Muffin Caramel, Cookie Fourré Choconuts, Cookie Framboise, Cookie Caramel Pécan, Cinnamon Roll, Cheesecake Choconuts M&M'S
+- Produits vides (size:null): Café Segafredo, Lait demi-écrémé, Croissant, Pain au Chocolat, Donut sucré, Donut choco-noisette, Macaron Chocolat, Macaron Framboise, Macaron Vanille, Macaron Caramel, McPops Lotus, McPops Fruits Rouges, McPops Choconut, Muffin Chocolat, Muffin Caramel, Cookie Fourré Choconuts, Cookie Framboise, Cookie Caramel Pécan, Cheesecake Choconuts M&M'S
 
 INGRÉDIENTS BOISSONS (size:null): Concentré Jus d'orange, Concentré Ice Tea, Concentré Ice Tea Zéro, Concentré Green Ice Tea, Concentré Green Ice Tea Zéro, Concentré Oasis, Concentré Cherry Coke, Concentré Coca, CO2
 
 CUISINE (size:null):
 - Pains: Pain Mac, Pain Reg, Pain Royal, Pain 280, Pain CBO, Pain Big Arch, Pain McCrispy, Petit Tortilla, Grand Tortilla, Pains McMuffin
 - Garnitures: Bacon standard, Eclats de Bacon, Cheddar Orange, Cheddar Blanc, Gouda, Salade Mac, Salade Batavia, Salade d'été, Oignons royal, Oignons reg, Oignons frits, Tomates charnues, Cornichons, Kit Caesar
-- Sauces: Sauce Mac, Sauce Chicken, Sauce Filet, Sauce Tasty, Sauce CBO, Sauce Deluxe, Sauce Big Arch, Sauce Black Pepper Mayo, Sauce McExtreme, Sauce Ranch, Sauce Cheddar, Moutarde vrac, Ketchup Bib
-- Autre: Oeufs coquilles, Beurre Liquide, Jambon Croque, Patty de Fromage, Jalapenos, Sauce Habanero, Sauce Smoky, Fromage Raclette, Sauce Raclette
+- Sauces: Sauce Mac, Sauce Chicken, Sauce Filet, Sauce Tasty, Sauce CBO, Sauce Deluxe, Sauce McExtreme, Sauce Ranch, Sauce Cheddar, Moutarde vrac, Ketchup Bib, Sauce Moutarde Miel
+- Autre: Oeufs coquilles, Beurre Liquide, Jambon Croque, Fromage Raclette, Sauce Raclette
 
 RÈGLES CRITIQUES:
 1. QUANTITÉS: "kilo/kg/litre/l" → x1000 | "grammes/g" → tel quel | un=1, deux=2, trois=3, quatre=4, cinq=5, six=6, sept=7, huit=8, neuf=9, dix=10
