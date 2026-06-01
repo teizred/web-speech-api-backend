@@ -8,18 +8,18 @@ PRODUITS OFFICIELS:
 
 VIANDES (size:null): 10:1, 4:1, 3:1
 
-PROTÉINES (size:null): Poulet wrap, Poulet CBO, Poulet McChicken, Poulet BM, Filet, Nuggets, Nuggets Veggie, Apple Pie, Rosti
+PROTÉINES (size:null): Poulet wrap, Poulet CBO, Poulet McChicken, Poulet BM, Filet, Nuggets, Nuggets Veggie, Apple Pie, Rosti, Palet Fromage
 
-SANDWICHS (size:null): Big Mac, Big Mac Bacon, Royal Cheese, Royal Deluxe, Royal Bacon, Big Tasty 1 steak, Big Tasty 2 steaks, 280 Original, 280 Raclette, Big Arch, Double Cheese Bacon, Hamburger, Cheeseburger, Double Cheeseburger, McChicken, McCrispy, McCrispy Bacon, McCrispy Smoky Ranch Bacon, CBO, CBO Smoky Ranch, CBO Raclette, McVeggie, Filet-O-Fish, McFish, McFish Mayo, Fish New York, Double Fish New York, Croque McDo, Egg & Cheese McMuffin, Egg & Bacon McMuffin, Bacon & Beef McMuffin, P'tit Chicken, P'tit Wrap Ranch, P'tit Wrap Deluxe, P'tit Wrap Deluxe Veggie, McWrap New York, McWrap Smoky Ranch, McWrap Veggie, Boite de Nuggets, Boite de Nuggets Veggie, Deal Poisson, Deal Boeuf, Deal Poulet, CBO Rosti, Big Tasty Rosti, McExtreme Rosti
+SANDWICHS (size:null): Big Mac, Big Mac Bacon, Royal Cheese, Royal Deluxe, Royal Bacon, Big Tasty 1 steak, Big Tasty 2 steaks, 280 Original, 280 Raclette, Big Arch, Double Cheese Bacon, Hamburger, Cheeseburger, Double Cheeseburger, McChicken, McCrispy, McCrispy Bacon, McCrispy Smoky Ranch Bacon, CBO, CBO Smoky Ranch, CBO Raclette, McVeggie, Filet-O-Fish, McFish, McFish Mayo, Fish New York, Double Fish New York, Fish New York Curry Mango 1 Filet, Fish New York Curry Mango 2 Filet, Beef Mozza Cheddar, CBO Curry Mango, Croque McDo, Egg & Cheese McMuffin, Egg & Bacon McMuffin, Bacon & Beef McMuffin, P'tit Chicken, P'tit Wrap Ranch, P'tit Wrap Deluxe, P'tit Wrap Deluxe Veggie, McWrap New York, McWrap Smoky Ranch, McWrap Veggie, Boite de Nuggets, Boite de Nuggets Veggie, Deal Poisson, Deal Boeuf, Deal Poulet, CBO Rosti, Big Tasty Rosti, McExtreme Rosti
 
 ACCOMPAGNEMENTS:
 - Frites (taille P/M/G obligatoire), Potatoes (M/G obligatoire), Wavy Fries (M/G obligatoire)
 - Sans taille: Frites Cheddar, Frites Bacon, Potatoes Cheddar, Potatoes Bacon
 
-BOISSONS (taille P/M/G obligatoire): Coca-Cola, Coca-Cola Sans-Sucres, Coca-Cola Cherry Zéro, Fanta Sans-Sucres, Sprite Sans-Sucres, Oasis Tropical, Green Apple Sprite, Minute Maid Orange, Lipton Ice Tea
+BOISSONS (taille P/M/G obligatoire): Coca-Cola, Coca-Cola Sans-Sucres, Coca-Cola Cherry Zéro, Fanta Sans-Sucres, Sprite Sans-Sucres, Oasis Tropical, Green Apple Sprite, Minute Maid Orange, Lipton Ice Tea, Boisson Fruit du Dragon
 Sans taille: Eau Plate, Eau Pétillante, P'tit Nectar Pomme, Capri-Sun Tropical, Tropicana
 
-DESSERTS (size:null): Sundae Chocolat, Sundae Caramel, Sundae Pistache, Sundae Affogato, P'tit Sundae Chocolat, P'tit Sundae Caramel, McFlurry KitKat, McFlurry M&M's, McFlurry Daim, McFlurry Oreo, McFlurry Shortbread, McFlurry Infinity, McFlurry, Milkshake, Milkshake Chantilly, P'tit Ice Squeeze (Vanille), Berlingot Pomme Pêche, Bio à boire, P'tite Pomme, P'tit Ananas, P'tits Carottes
+DESSERTS (size:null): Sundae Chocolat, Sundae Caramel, Sundae Pistache, Sundae Affogato, P'tit Sundae Chocolat, P'tit Sundae Caramel, P'tit Sundae Pistache, McFlurry KitKat, McFlurry M&M's, McFlurry Daim, McFlurry Oreo, McFlurry Shortbread, McFlurry Infinity, McFlurry, Milkshake, Milkshake Chantilly, P'tit Ice Squeeze (Vanille), Berlingot Pomme Pêche, Bio à boire, P'tite Pomme, P'tit Ananas, P'tits Carottes
 
 MCCAFÉ:
 - Taille M/G obligatoire: Café Allongé, Café Allongé Décaféiné, Thé Earl Grey, Thé Menthe, Thé Citron, Café Latté, Café Latte Gourmand, Café Latte Glacé, Café Latte Glacé Gourmand, Cappuccino, Chocolat Chaud, Chocolat Chaud Gourmand, Americano Glacé
@@ -31,7 +31,7 @@ INGRÉDIENTS BOISSONS (size:null): Concentré Jus d'orange, Concentré Ice Tea, 
 CUISINE (size:null):
 - Pains: Pain Mac, Pain Reg, Pain Royal, Pain 280, Pain CBO, Pain Big Arch, Pain McCrispy, Petit Tortilla, Grand Tortilla, Pains McMuffin
 - Garnitures: Bacon standard, Eclats de Bacon, Cheddar Orange, Cheddar Blanc, Gouda, Salade Mac, Salade Batavia, Salade d'été, Oignons royal, Oignons reg, Oignons frits, Tomates charnues, Cornichons, Kit Caesar
-- Sauces: Sauce Mac, Sauce Chicken, Sauce Filet, Sauce Tasty, Sauce CBO, Sauce Deluxe, Sauce McExtreme, Sauce Ranch, Sauce Cheddar, Moutarde vrac, Ketchup Bib, Sauce Moutarde Miel
+- Sauces: Sauce Mac, Sauce Chicken, Sauce Filet, Sauce Tasty, Sauce CBO, Sauce Deluxe, Sauce McExtreme, Sauce Ranch, Sauce Cheddar, Moutarde vrac, Ketchup Bib, Sauce Moutarde Miel, Sauce Mango
 - Autre: Oeufs coquilles, Beurre Liquide, Jambon Croque, Fromage Raclette, Sauce Raclette
 
 RÈGLES CRITIQUES:
@@ -82,6 +82,15 @@ MAPPING PHONÉTIQUE (CRITIQUE):
 - "wavy", "wavi", "ouavy" → "Wavy Fries"
 - "pota", "potato" → "Potatoes"
 - "smoky", "smouki" → garder dans le nom du produit
+- "beef mozza", "beef mozza cheddar" → "Beef Mozza Cheddar"
+- "cbo curry mango", "cbo curry" → "CBO Curry Mango"
+- "fish curry mango un", "fish curry 1", "fish curry mango 1 filet" → "Fish New York Curry Mango 1 Filet"
+- "fish curry mango deux", "fish curry 2", "fish curry mango 2 filet" → "Fish New York Curry Mango 2 Filet"
+- "fruit du dragon", "boisson fruit du dragon" → "Boisson Fruit du Dragon"
+- "palet fromage" → "Palet Fromage"
+- "sauce mango" → "Sauce Mango"
+- "sundae pistache" → "Sundae Pistache"
+- "ptit sundae pistache", "p'tit sundae pistache", "petit sundae pistache" → "P'tit Sundae Pistache"
 
 MOTS À IGNORER: "ajoute", "mets", "enregistre", "perte", "pertes", "en perte", "perte de", "une perte de", "en pertes", "de", "du", "et", "aussi", "viande"
 
